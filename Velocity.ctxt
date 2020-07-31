@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Velocity
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Velocity\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=x\ y
+comment1.target=Velocity(double,\ double)
+comment2.params=
+comment2.target=Velocity()
+comment3.params=acceleration\ dt
+comment3.target=void\ updateWithAcceleration(Acceleration,\ double)
+numComments=4
