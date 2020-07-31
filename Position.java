@@ -14,8 +14,19 @@ public class Position extends Vector
         super(0, 0);
     }
     
-    public void updateWithVelocity(Velocity vel, double dt) {
+    public void updateWithVelocity(Velocity vel, double dt, double width) {
         x += vel.getX() * dt;
         y += vel.getY() * dt;
+        
+        if (y <= 0) {
+            y = 0;
+            vel.setY(0);
+        }
+        
+        if (x > width) {
+            x %= width;
+        } else if (x < 0) {
+            x = width + x;
+        }
     }
 }
