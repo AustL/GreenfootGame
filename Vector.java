@@ -4,7 +4,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Vector  
+public class Vector
 {
     // instance variables - replace the example below with your own
     protected double x;
@@ -36,9 +36,5 @@ public class Vector
     
     public void setY(double y) {
         this.y = y;
-    }
-    
-    public Vector add(Vector other) {
-        return new Vector(x + other.getX(), y + other.getY());
     }
 }

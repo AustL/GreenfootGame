@@ -8,10 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ball extends Actor
 {
-    private Position position = new Position(0, 0);
-    private Velocity velocity = new Velocity(0, 0);
-    private Acceleration acceleration = new Acceleration(0, -9.8);
+    private Position position = new Position();
+    private Velocity velocity = new Velocity();
+    private Acceleration acceleration = new Acceleration();
     private double dt = 0.1;
+    private Force force = new Force();
+    private double mass = 1;
     
     /**
      * Act - do whatever the Ball wants to do. This method is called whenever
@@ -20,25 +22,22 @@ public class Ball extends Actor
     public void act() {
         getUserInput();
         updatePosition();
-        setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY());
+        setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - 60);
     }
     
     public void updatePosition() {
+        acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
         position.updateWithVelocity(velocity, dt, getWorld().getWidth());
     }
     
     public void getUserInput() {
-        if (Greenfoot.isKeyDown("up")) {
-            velocity.setY(50);
+        if (Greenfoot.getKey() == "space") {
+            applyForce(10, 0);
         }
-        
-        if (Greenfoot.isKeyDown("left")) {
-            acceleration.setX(-10);
-        }
-        
-        if (Greenfoot.isKeyDown("right")) {
-            acceleration.setX(10);
-        }
+    }
+    
+    public void applyForce(double x, double y) {
+        force = (Force) force.add(new Force(x, y));
     }
 }

@@ -14,6 +14,4 @@ comment5.params=x
 comment5.target=void\ setX(double)
 comment6.params=y
 comment6.target=void\ setY(double)
-comment7.params=other
-comment7.target=Vector\ add(Vector)
-numComments=8
+numComments=7

@@ -8,4 +8,6 @@ comment2.params=
 comment2.target=void\ updatePosition()
 comment3.params=
 comment3.target=void\ getUserInput()
-numComments=4
+comment4.params=x\ y
+comment4.target=void\ applyForce(double,\ double)
+numComments=5
