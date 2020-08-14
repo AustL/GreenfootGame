@@ -8,30 +8,47 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ProjectileMotion extends World
 {
-
+    private Button startButton;
+    private Ball ball;
+    
+    private double maxHeight = 0;
+    private double maxRange = 0;
     /**
      * Constructor for objects of class ProjectileMotion.
      * 
      */
-    public ProjectileMotion()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    public ProjectileMotion() {    
+        // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
         prepare();
+    }
+    
+    public void act() {
+        if (startButton.mouseUp()) {
+            begin();
+            startButton.disable();
+        }
     }
 
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    private void prepare()
-    {
-        Ball ball = new Ball();
-        addObject(ball, 0, getHeight() - 60);
+    private void prepare() {
+        startButton = new Button(400, 200, 300, 150, new Color(0, 0, 0, 50), "Begin", 50, new Color(0, 0, 0));
+        addObject(startButton, startButton.getXPos() + startButton.getWidth() / 2, startButton.getYPos() + startButton.getHeight() / 2);
+        startButton.setHoverColour(new Color(0, 0, 0, 100));
+        
+        ball = new Ball(20, 0, 1);
+        addObject(ball, 20, getHeight() - 60);
         
         for (int i = 0; i < 15; i++) {
             Ground ground = new Ground();
             addObject(ground, 40 + i * 80, 783);
         }
+    }
+    
+    private void begin() {
+        ball.setVelocity(50, 50);
     }
 }
