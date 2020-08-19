@@ -7,13 +7,8 @@ import java.lang.reflect.Method;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Button extends Actor
+public class Button extends UIBase
 {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
-    private Color colour;
     private String text;
     private int fontSize;
     private Color textColour;
@@ -21,8 +16,6 @@ public class Button extends Actor
     private Color normalColour;
     private Color hoverColour;
     // private Color clickedColour;
-    
-    private boolean enabled = true;
     
     /**
      * Constructor for a button with text
@@ -36,11 +29,7 @@ public class Button extends Actor
      * @param textColour Colour of text
      */
     public Button(int x, int y, int width, int height, Color colour, String text, int fontSize, Color textColour) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.colour = colour;
+        super(x, y, width, height, colour);
         this.text = text;
         this.fontSize = fontSize;
         this.textColour = textColour;
@@ -61,11 +50,7 @@ public class Button extends Actor
      * @param colour Background colour of button
      */
     public Button(int x, int y, int width, int height, Color colour) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.colour = colour;
+        super(x, y, width, height, colour);
         this.text = "";
         this.fontSize = 0;
         this.textColour = new Color(0, 0, 0, 0);
@@ -94,7 +79,7 @@ public class Button extends Actor
         createImage();
     }
     
-    public void createImage() {
+    private void createImage() {
         GreenfootImage image = new GreenfootImage(width, height);
         image.setColor(colour);
         image.fillRect(0, 0, width, height);
@@ -105,10 +90,6 @@ public class Button extends Actor
         setImage(image);
     }
     
-    public boolean contains(int x, int y) {
-        return this.x < x && x < this.x + this.width && this.y < y && y < this.y + this.height;
-    }
-    
     public void setColour(Color colour) { this.colour = colour; createImage(); }
     
     public void setText(String text) { this.text = text; createImage(); }
@@ -116,20 +97,6 @@ public class Button extends Actor
     public void setHoverColour(Color colour) { this.hoverColour = colour; }
     
     // public void setClickedColour(Color colour) { this.clickedColour = colour; }
-    
-    public void disable() { enabled = false; }
-    
-    public void enable() { enabled = true; }
-    
-    public int getXPos() { return this.x; }
-    
-    public int getYPos() { return this.y; }
-    
-    public int getWidth() { return this.width; }
-    
-    public int getHeight() { return this.height; }
-    
-    public Color getColour() { return this.colour; }
     
     public String getText() { return text; }
     

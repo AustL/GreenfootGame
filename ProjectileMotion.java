@@ -39,6 +39,9 @@ public class ProjectileMotion extends World
         addObject(startButton, startButton.getXPos() + startButton.getWidth() / 2, startButton.getYPos() + startButton.getHeight() / 2);
         startButton.setHoverColour(new Color(0, 0, 0, 100));
         
+        Slider testSlider = new Slider(100, 500, 500, 20, new Color(0, 0, 100, 255), 20, 0, 100, new Color(0, 100, 0));
+        addObject(testSlider, testSlider.getXPos() + testSlider.getWidth() / 2, testSlider.getYPos() + testSlider.getHeight() / 2);
+        
         ball = new Ball(20, 0, 1);
         addObject(ball, 20, getHeight() - 60);
         

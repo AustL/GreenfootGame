@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=UIBase
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ UIBase\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=x\ y\ width\ height\ colour
+comment1.target=UIBase(int,\ int,\ int,\ int,\ greenfoot.Color)
+comment2.params=
+comment2.target=int\ getXPos()
+comment3.params=
+comment3.target=int\ getYPos()
+comment4.params=
+comment4.target=int\ getWidth()
+comment5.params=
+comment5.target=int\ getHeight()
+comment6.params=
+comment6.target=greenfoot.Color\ getColour()
+comment7.params=
+comment7.target=void\ disable()
+comment8.params=
+comment8.target=void\ enable()
+numComments=9
