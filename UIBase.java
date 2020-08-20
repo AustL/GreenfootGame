@@ -28,6 +28,10 @@ public class UIBase extends Actor
         return this.x < x && x < this.x + this.width && this.y < y && y < this.y + this.height;
     }
     
+    public void addToWorld(World world) {
+        world.addObject(this, getXPos() + getWidth() / 2, getYPos() + getHeight() / 2);
+    }
+    
     public int getXPos() { return x; }
     
     public int getYPos() { return y; }

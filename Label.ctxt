@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Label
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Button\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=x\ y\ width\ height\ colour\ text\ fontSize\ textColour
+comment1.target=Label(int,\ int,\ int,\ int,\ greenfoot.Color,\ java.lang.String,\ int,\ greenfoot.Color)
+comment1.text=\r\n\ Constructor\ for\ a\ text\ label\r\n\ @param\ x\ Top\ left\ coordinate\ x\r\n\ @param\ y\ Top\ left\ coordinate\ y\r\n\ @param\ width\ Width\ of\ label\r\n\ @param\ height\ Height\ of\ label\r\n\ @param\ colour\ Background\ colour\ of\ label\r\n\ @param\ text\ String\ to\ display\ on\ the\ label\r\n\ @param\ fontSize\ Font\ size\ of\ text\r\n\ @param\ textColour\ Colour\ of\ text\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Label\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ createImage()
+comment4.params=colour
+comment4.target=void\ setColour(greenfoot.Color)
+comment5.params=text
+comment5.target=void\ setText(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ getText()
+numComments=7

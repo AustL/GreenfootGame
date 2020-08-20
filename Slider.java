@@ -34,28 +34,26 @@ public class Slider extends UIBase
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        if (Greenfoot.mousePressed(this)) {
-            selected = true;
+        if (Greenfoot.mouseDragged(this)) {
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            if (mouse != null) drag(mouse.getX());
         }
     }
     
-    public void drag(int x, int y) {
-        value = Math.round((x - this.x) / width * max + min);
+    public void drag(int mouseX) {
+        value = (mouseX - this.x) / (double) width * max + min;
         value = Math.max(Math.min(value, max), min);
+        createImage();
     }
     
     private void createImage() {
         GreenfootImage image = new GreenfootImage(width, r * 2);
         image.setColor(colour);
-        image.fillRect(r, (r * 2 - height) / 2, width - r, height);
+        image.fillRect(r, (r * 2 - height) / 2, width - r * 2, height);
         image.setColor(handleColour);
-        image.fillOval(0, 0, r * 2, r * 2);
-        
+        image.fillOval((int) ((value - min) / (max - min) * (width - 2 * r)), 0, r * 2, r * 2);
         setImage(image);
     }
     
-    @Override
-    public boolean contains(int x, int y) {
-        return x == 1;
-    }
+    public double getValue() { return Math.round(value * 100.0) / 100.0; }
 }

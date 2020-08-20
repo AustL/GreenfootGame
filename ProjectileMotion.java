@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ProjectileMotion extends World
 {
     private Button startButton;
+    private Label testLabel;
+    private Slider testSlider;
     private Ball ball;
     
     private double maxHeight = 0;
@@ -28,6 +30,8 @@ public class ProjectileMotion extends World
             begin();
             startButton.disable();
         }
+        
+        testLabel.setText(String.valueOf(testSlider.getValue()));
     }
 
     /**
@@ -36,11 +40,14 @@ public class ProjectileMotion extends World
      */
     private void prepare() {
         startButton = new Button(400, 200, 300, 150, new Color(0, 0, 0, 50), "Begin", 50, new Color(0, 0, 0));
-        addObject(startButton, startButton.getXPos() + startButton.getWidth() / 2, startButton.getYPos() + startButton.getHeight() / 2);
+        startButton.addToWorld(this);
         startButton.setHoverColour(new Color(0, 0, 0, 100));
         
-        Slider testSlider = new Slider(100, 500, 500, 20, new Color(0, 0, 100, 255), 20, 0, 100, new Color(0, 100, 0));
-        addObject(testSlider, testSlider.getXPos() + testSlider.getWidth() / 2, testSlider.getYPos() + testSlider.getHeight() / 2);
+        testSlider = new Slider(100, 500, 500, 20, new Color(0, 0, 100, 255), 20, 0, 100, new Color(0, 100, 0));
+        testSlider.addToWorld(this);
+        
+        testLabel = new Label(200, 600, 200, 100, new Color(100, 100, 0, 255), "Label", 50, new Color(0, 0, 0));
+        testLabel.addToWorld(this);
         
         ball = new Ball(20, 0, 1);
         addObject(ball, 20, getHeight() - 60);
@@ -52,6 +59,6 @@ public class ProjectileMotion extends World
     }
     
     private void begin() {
-        ball.setVelocity(50, 50);
+        ball.setVelocity(testSlider.getValue(), testSlider.getValue());
     }
 }
