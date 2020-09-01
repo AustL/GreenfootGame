@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ball extends Actor
 {
+    private final int groundLevel = 70;
+    
     private Position position = new Position();
     private Velocity velocity = new Velocity();
     private Acceleration acceleration = new Acceleration();
@@ -16,11 +18,14 @@ public class Ball extends Actor
     private Force force;
     
     private boolean paused = false;
+    private boolean forceVisible = false;
     
     public Ball(double x, double y, double mass) {
         this.position = new Position(x, y);
         this.mass = mass;
         this.force = new Force(0, -9.8 * mass);
+        
+        createImage();
     }
     
     /**
@@ -31,8 +36,46 @@ public class Ball extends Actor
         if (!paused) {
             getUserInput();
             updatePosition();
-            setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - 60);
+            setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - groundLevel);
         }
+        
+        if (forceVisible) {
+            drawForce();
+        }
+    }
+    
+    private void createImage() {
+        GreenfootImage image = new GreenfootImage(40, 40);
+        image.setColor(new Color(39, 170, 225));
+        image.fillOval(0, 0, 40, 40);
+        setImage(image);
+    }
+    
+    public void addToWorld(World world) {
+        world.addObject(this, 20, world.getHeight() - groundLevel);
+    }
+    
+    public void drawLine(double length, double angle) {
+        angle = Math.toRadians(angle);
+        
+        int x1 = getX();
+        int y1 = getY();
+        int x2 = x1 + (int) (length * Math.cos(angle));
+        int y2 = y1 - (int) (length * Math.sin(angle));
+        
+        GreenfootImage image = getWorld().getBackground();
+        
+        image.setColor(Color.BLACK);
+        image.drawLine(x1, y1, x2, y2);
+        
+        getWorld().setBackground(image);
+    }
+    
+    public void drawForce() {
+        double angle = force.getAngle();
+        double length = force.getMagnitude() * 5;
+
+        drawLine(length, Math.toDegrees(angle));
     }
     
     public void updatePosition() {
@@ -47,6 +90,10 @@ public class Ball extends Actor
         }
     }
     
+    public void showForces() {
+        forceVisible = true;
+    }
+    
     public void applyForce(double x, double y) {
         force = (Force) force.add(new Force(x, y));
     }
@@ -58,4 +105,16 @@ public class Ball extends Actor
     public void pause() { paused = true; }
     
     public void resume() { paused = false; }
+    
+    public Position getPosition() {
+        return position;
+    }
+    
+    public Velocity getVelocity() {
+        return velocity;
+    }
+    
+    public Acceleration getAcceleration() {
+        return acceleration;
+    }
 }

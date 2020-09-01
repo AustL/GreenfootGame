@@ -12,19 +12,25 @@ public class Slider extends UIBase
     private double min;
     private double max;
     private Color handleColour;
+    private Color handleBorderColour;
+    private Color borderColour;
+    private int border;
     
     private double value;
     
     private boolean selected = false;
     
-    public Slider(int x, int y, int width, int height, Color colour, int r, int min, int max, Color handleColour) {
+    public Slider(int x, int y, int width, int height, Color colour, int r, int min, int max, Color handleColour, Color handleBorderColour, Color borderColour, int border) {
         super(x, y, width, height, colour);
         this.r = r;
         this.min = min;
         this.max = max;
         this.handleColour = handleColour;
+        this.handleBorderColour = handleBorderColour;
+        this.borderColour = borderColour;
+        this.border = border;
         
-        this.value = min;
+        this.value = (min + max) / 2;
         
         createImage();
     }
@@ -48,10 +54,14 @@ public class Slider extends UIBase
     
     private void createImage() {
         GreenfootImage image = new GreenfootImage(width, r * 2);
-        image.setColor(colour);
+        image.setColor(borderColour);
         image.fillRect(r, (r * 2 - height) / 2, width - r * 2, height);
-        image.setColor(handleColour);
+        image.setColor(colour);
+        image.fillRect(r + border, (r * 2 - height) / 2 + border, width - r * 2 - border * 2, height - border * 2);
+        image.setColor(handleBorderColour);
         image.fillOval((int) ((value - min) / (max - min) * (width - 2 * r)), 0, r * 2, r * 2);
+        image.setColor(handleColour);
+        image.fillOval((int) ((value - min) / (max - min) * (width - 2 * r)) + border, border, (r - border) * 2, (r - border) * 2);
         setImage(image);
     }
     

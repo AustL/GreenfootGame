@@ -8,30 +8,42 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ProjectileMotion extends World
 {
-    private Button startButton;
-    private Label testLabel;
-    private Slider testSlider;
-    private Ball ball;
+    private final double velocityToLength = 0.5;
     
+    private Button startButton;
+    private Slider angle;
+    private Slider velocity;
+    private Ball ball;
+
     private double maxHeight = 0;
     private double maxRange = 0;
+    
+    private boolean started = false;
     /**
      * Constructor for objects of class ProjectileMotion.
      * 
      */
     public ProjectileMotion() {    
         // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
-        super(1200, 800, 1); 
+        super(1200, 800, 1);
         prepare();
+        setBackground(new GreenfootImage("Projectile Motion.png"));
     }
     
     public void act() {
+        setBackground(new GreenfootImage("Projectile Motion.png"));
+        
         if (startButton.mouseUp()) {
+            started = true;
             begin();
             startButton.disable();
+            ball.showForces();
         }
         
-        testLabel.setText(String.valueOf(testSlider.getValue()));
+        // Display line
+        if (!started) {
+            ball.drawLine(velocity.getValue() * velocityToLength, angle.getValue());
+        }
     }
 
     /**
@@ -39,26 +51,21 @@ public class ProjectileMotion extends World
      * That is: create the initial objects and add them to the world.
      */
     private void prepare() {
-        startButton = new Button(400, 200, 300, 150, new Color(0, 0, 0, 50), "Begin", 50, new Color(0, 0, 0));
+        startButton = new Button(800, 200, 300, 150, new Color(0, 0, 0, 50), "Begin", 50, new Color(0, 0, 0));
         startButton.addToWorld(this);
         startButton.setHoverColour(new Color(0, 0, 0, 100));
         
-        testSlider = new Slider(100, 500, 500, 20, new Color(0, 0, 100, 255), 20, 0, 100, new Color(0, 100, 0));
-        testSlider.addToWorld(this);
+        angle = new Slider(161, 155, 293, 14, new Color(188, 190, 192), 18, 0, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        angle.addToWorld(this);
         
-        testLabel = new Label(200, 600, 200, 100, new Color(100, 100, 0, 255), "Label", 50, new Color(0, 0, 0));
-        testLabel.addToWorld(this);
+        velocity = new Slider(161, 261, 293, 14, new Color(188, 190, 192), 18, 0, 150, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        velocity.addToWorld(this);
         
         ball = new Ball(20, 0, 1);
-        addObject(ball, 20, getHeight() - 60);
-        
-        for (int i = 0; i < 15; i++) {
-            Ground ground = new Ground();
-            addObject(ground, 40 + i * 80, 783);
-        }
+        ball.addToWorld(this);
     }
     
     private void begin() {
-        ball.setVelocity(testSlider.getValue(), testSlider.getValue());
+        ball.setVelocity(velocity.getValue() * Math.cos(Math.toRadians(angle.getValue())), velocity.getValue() * Math.sin(Math.toRadians(angle.getValue())));
     }
 }
