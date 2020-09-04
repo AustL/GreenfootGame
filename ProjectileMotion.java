@@ -8,9 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ProjectileMotion extends World
 {
-    private final double velocityToLength = 0.5;
+    private final double velocityToLength = 0.75;
     
     private Button startButton;
+    private Button backButton;
+    private Button helpButton;
+    private Button exitButton;
     private Slider angle;
     private Slider velocity;
     private Ball ball;
@@ -33,11 +36,15 @@ public class ProjectileMotion extends World
     public void act() {
         setBackground(new GreenfootImage("Projectile Motion.png"));
         
-        if (startButton.mouseUp()) {
+        if (startButton.mouseDown()) {
             started = true;
             begin();
             startButton.disable();
             ball.showForces();
+        }
+
+        if (backButton.mouseDown()) {
+            Greenfoot.setWorld(new Menu());
         }
         
         // Display line
@@ -51,14 +58,26 @@ public class ProjectileMotion extends World
      * That is: create the initial objects and add them to the world.
      */
     private void prepare() {
-        startButton = new Button(800, 200, 300, 150, new Color(0, 0, 0, 50), "Begin", 50, new Color(0, 0, 0));
+        startButton = new EllipseButton(948, 332, 187, 187, new Color(0, 148, 68, 0));
         startButton.addToWorld(this);
-        startButton.setHoverColour(new Color(0, 0, 0, 100));
+        startButton.setHoverColour(new Color(0, 148, 68, 120));
         
-        angle = new Slider(161, 155, 293, 14, new Color(188, 190, 192), 18, 0, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        backButton = new Button(33, 10, 80, 80, new Color(57, 181, 74, 0));
+        backButton.addToWorld(this);
+        backButton.setHoverColour(new Color(57, 181, 74, 140));
+        
+        helpButton = new Button(988, 10, 80, 80, new Color(57, 181, 74, 0));
+        helpButton.addToWorld(this);
+        helpButton.setHoverColour(new Color(57, 181, 74, 140));
+        
+        exitButton = new Button(1102, 10, 80, 80, new Color(57, 181, 74, 0));
+        exitButton.addToWorld(this);
+        exitButton.setHoverColour(new Color(57, 181, 74, 140));
+        
+        angle = new Slider(161, 155, 293, 14, new Color(188, 190, 192), 20, 90, 0, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         angle.addToWorld(this);
         
-        velocity = new Slider(161, 261, 293, 14, new Color(188, 190, 192), 18, 0, 150, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        velocity = new Slider(161, 261, 293, 14, new Color(188, 190, 192), 20, 0, 100, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         velocity.addToWorld(this);
         
         ball = new Ball(20, 0, 1);

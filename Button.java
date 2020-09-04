@@ -9,13 +9,13 @@ import java.lang.reflect.Method;
  */
 public class Button extends UIBase
 {
-    private String text;
-    private int fontSize;
-    private Color textColour;
+    protected String text;
+    protected int fontSize;
+    protected Color textColour;
     
-    private Color normalColour;
-    private Color hoverColour;
-    // private Color clickedColour;
+    protected Color normalColour;
+    protected Color hoverColour;
+    // protected Color clickedColour;
     
     /**
      * Constructor for a button with text
@@ -79,7 +79,7 @@ public class Button extends UIBase
         createImage();
     }
     
-    private void createImage() {
+    protected void createImage() {
         GreenfootImage image = new GreenfootImage(width, height);
         image.setColor(colour);
         image.fillRect(0, 0, width, height);
@@ -102,5 +102,5 @@ public class Button extends UIBase
     
     public boolean mouseDown() { return Greenfoot.mousePressed(this) && enabled; }
     
-    public boolean mouseUp() { return Greenfoot.mousePressed(this) && enabled; }
+    public boolean mouseUp() { return Greenfoot.mouseClicked(this) && enabled; }
 }
