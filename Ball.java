@@ -10,6 +10,8 @@ public class Ball extends Actor
 {
     private final int groundLevel = 70;
     
+    private double time;
+    
     private Position position = new Position();
     private Velocity velocity = new Velocity();
     private Acceleration acceleration = new Acceleration();
@@ -24,6 +26,8 @@ public class Ball extends Actor
         this.position = new Position(x, y);
         this.mass = mass;
         this.force = new Force(0, -9.8 * mass);
+        
+        time = 0;
         
         createImage();
     }
@@ -42,6 +46,8 @@ public class Ball extends Actor
         if (forceVisible) {
             drawForce();
         }
+        
+        time += dt;
     }
     
     private void createImage() {

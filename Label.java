@@ -9,9 +9,9 @@ import java.lang.reflect.Method;
  */
 public class Label extends UIBase
 {
-    private String text;
-    private int fontSize;
-    private Color textColour;
+    protected String text;
+    protected int fontSize;
+    protected Color textColour;
     
     /**
      * Constructor for a text label
@@ -29,8 +29,6 @@ public class Label extends UIBase
         this.text = text;
         this.fontSize = fontSize;
         this.textColour = textColour;
-        
-        createImage();
     }
     
     /**
@@ -41,7 +39,7 @@ public class Label extends UIBase
         createImage();
     }
     
-    private void createImage() {
+    protected void createImage() {
         GreenfootImage image = new GreenfootImage(width, height);
         image.setColor(colour);
         image.fillRect(0, 0, width, height);

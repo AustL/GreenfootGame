@@ -16,6 +16,9 @@ public class ProjectileMotion extends World
     private Button exitButton;
     private Slider angle;
     private Slider velocity;
+    
+    private Label velocityLabel;
+    
     private Ball ball;
 
     private double maxHeight = 0;
@@ -79,6 +82,9 @@ public class ProjectileMotion extends World
         
         velocity = new Slider(161, 261, 293, 14, new Color(188, 190, 192), 20, 0, 100, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         velocity.addToWorld(this);
+        
+        velocityLabel = new LinkedLabel(161, 500, 200, 150, new Color(57, 181, 74), velocity::getValueAsString, 20, Color.BLACK);
+        velocityLabel.addToWorld(this);
         
         ball = new Ball(20, 0, 1);
         ball.addToWorld(this);

@@ -66,4 +66,6 @@ public class Slider extends UIBase
     }
     
     public double getValue() { return Math.round(value * 100.0) / 100.0; }
+    
+    public String getValueAsString() { return Double.toString(getValue()); }
 }
