@@ -24,21 +24,16 @@ public class Pendulum extends Actor
     private double theta;
     private double time;
     
-    private boolean paused = false;
+    private boolean paused = true;
     
     public Pendulum(double radius, double theta, double mass) {
-        this.theta = Math.toRadians(theta);
-        double x = anchorX + radius * Math.cos(this.theta);
-        double y = anchorY + radius * Math.sin(this.theta);
+        setPosition(radius, Math.toRadians(theta));
         
         this.radius = radius;
-        this.position = new Position(x, y);
         this.mass = mass;
         this.gravity = new Force(0, -9.8 * mass);
         this.tension = calculateTension(this.theta);
         time = 0;
-        
-        createImage();
     }
 
     /**
@@ -46,17 +41,17 @@ public class Pendulum extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        time += dt;
-        createImage();
-        drawString();
-        
-        updatePosition();
-        
+        if (!paused) {
+            time += dt;
+            updatePosition();
+        }
         setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY());
+        createImage();
     }
-    
+
     public void addToWorld(World world) {
         world.addObject(this, (int) position.getX(), world.getHeight() - (int) position.getY());
+        createImage();
     }
     
     private void createImage() {
@@ -64,15 +59,20 @@ public class Pendulum extends Actor
         image.setColor(new Color(39, 170, 225));
         image.fillOval(0, 0, 40, 40);
         setImage(image);
-    }
-    
-    private void drawString() {
-        GreenfootImage image = getWorld().getBackground();
+        
+        image = getWorld().getBackground();
         
         image.setColor(new Color(57, 181, 74));
         image.drawLine(getX(), getY(), anchorX, getWorld().getHeight() - anchorY);
         
         getWorld().setBackground(image);
+    }
+    
+    public void setPosition(double radius, double theta) {
+        theta = Math.toRadians(theta);
+        double x = anchorX + radius * Math.cos(theta);
+        double y = anchorY + radius * Math.sin(theta);
+        position = new Position(x, y);
     }
     
     private void updatePosition() {
@@ -83,6 +83,8 @@ public class Pendulum extends Actor
         acceleration = nettForce.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
         position.updateWithVelocity(velocity, dt, getWorld().getWidth());
+        
+        setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY());
     }
     
     private Force calculateTension(double theta) {
@@ -95,6 +97,8 @@ public class Pendulum extends Actor
     }
     
     public void setRadius(double radius) { this.radius = radius; }
+    
+    public void setAngle(double angle) { this.theta = Math.toRadians(angle); }
     
     public void pause() { paused = true; }
     

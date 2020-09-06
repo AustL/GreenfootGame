@@ -20,6 +20,7 @@ public class ProjectileMotion extends World
     
     private Label time;
     private Label velocityLabel;
+    private Label angleLabel;
     
     private Ball ball;
 
@@ -80,19 +81,22 @@ public class ProjectileMotion extends World
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
         
-        angle = new Slider(161, 155, 293, 14, new Color(188, 190, 192), 20, 0, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        angle = new Slider(141, 156, 336, 14, new Color(188, 190, 192), 20, 0, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         angle.addToWorld(this);
         
-        velocity = new Slider(161, 261, 293, 14, new Color(188, 190, 192), 20, 0, 100, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        velocity = new Slider(141, 210, 336, 14, new Color(188, 190, 192), 20, 0, 100, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         velocity.addToWorld(this);
         
-        velocityLabel = new LinkedLabel(161, 500, 200, 150, new Color(57, 181, 74), () -> String.format("%.02f", velocity.getValue()), 20, Color.BLACK);
+        angleLabel = new LinkedLabel(470, 144, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", angle.getValue()), 30, new Color(0, 148, 68));
+        angleLabel.addToWorld(this);
+        
+        velocityLabel = new LinkedLabel(470, 198, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", velocity.getValue()), 30, new Color(0, 148, 68));
         velocityLabel.addToWorld(this);
         
         ball = new Ball(20, 0, 1);
         ball.addToWorld(this);
         
-        time = new LinkedLabel(100, 500, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()), 40, new Color(0, 0, 0));
+        time = new LinkedLabel(100, 500, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()), 40, new Color(0, 148, 68));
         time.addToWorld(this);
     }
     

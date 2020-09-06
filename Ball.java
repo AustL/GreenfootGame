@@ -37,15 +37,15 @@ public class Ball extends Actor {
      */
     public void act() {
         if (!paused) {
-            getUserInput();
             updatePosition();
-            setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - groundLevel);
             time += dt;
+        
+            if (forceVisible) {
+                drawForce();
+            }
         }
         
-        if (forceVisible) {
-            drawForce();
-        }
+        setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - groundLevel);
     }
     
     private void createImage() {
@@ -88,20 +88,10 @@ public class Ball extends Actor {
         position.updateWithVelocity(velocity, dt, getWorld().getWidth());
     }
     
-    public void getUserInput() {
-        if (Greenfoot.getKey() == "space") {
-            applyForce(0, 10);
-        }
-    }
-    
     public void showForces() {
         forceVisible = true;
     }
-    
-    public void applyForce(double x, double y) {
-        force = (Force) force.add(new Force(x, y));
-    }
-    
+
     public void setVelocity(double x, double y) {
         velocity = new Velocity(x, y);
     }
