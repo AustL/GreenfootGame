@@ -12,6 +12,4 @@ comment4.params=
 comment4.target=void\ createImage()
 comment5.params=
 comment5.target=double\ getValue()
-comment6.params=
-comment6.target=java.lang.String\ getValueAsString()
-numComments=7
+numComments=6

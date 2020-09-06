@@ -17,7 +17,7 @@ public class Force extends Vector
     public Acceleration getAcceleration(double mass) {
         return new Acceleration(x / mass, y / mass);
     }
-
+    
     public Force add(Force other) {
         return new Force(x + other.getX(), y + other.getY());
     }

@@ -14,9 +14,11 @@ public class ProjectileMotion extends World
     private Button backButton;
     private Button helpButton;
     private Button exitButton;
+
     private Slider angle;
     private Slider velocity;
     
+    private Label time;
     private Label velocityLabel;
     
     private Ball ball;
@@ -40,14 +42,15 @@ public class ProjectileMotion extends World
         setBackground(new GreenfootImage("Projectile Motion.png"));
         
         if (startButton.mouseDown()) {
-            started = true;
             begin();
-            startButton.disable();
-            ball.showForces();
         }
 
         if (backButton.mouseDown()) {
             Greenfoot.setWorld(new Menu());
+        }
+        
+        if (exitButton.mouseUp()) {
+            Greenfoot.stop();
         }
         
         // Display line
@@ -77,20 +80,27 @@ public class ProjectileMotion extends World
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
         
-        angle = new Slider(161, 155, 293, 14, new Color(188, 190, 192), 20, 90, 0, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        angle = new Slider(161, 155, 293, 14, new Color(188, 190, 192), 20, 0, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         angle.addToWorld(this);
         
         velocity = new Slider(161, 261, 293, 14, new Color(188, 190, 192), 20, 0, 100, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         velocity.addToWorld(this);
         
-        velocityLabel = new LinkedLabel(161, 500, 200, 150, new Color(57, 181, 74), velocity::getValueAsString, 20, Color.BLACK);
+        velocityLabel = new LinkedLabel(161, 500, 200, 150, new Color(57, 181, 74), () -> String.format("%.02f", velocity.getValue()), 20, Color.BLACK);
         velocityLabel.addToWorld(this);
         
         ball = new Ball(20, 0, 1);
         ball.addToWorld(this);
+        
+        time = new LinkedLabel(100, 500, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()), 40, new Color(0, 0, 0));
+        time.addToWorld(this);
     }
     
     private void begin() {
         ball.setVelocity(velocity.getValue() * Math.cos(Math.toRadians(angle.getValue())), velocity.getValue() * Math.sin(Math.toRadians(angle.getValue())));
+        startButton.disable();
+        ball.showForces();
+        started = true;
+        ball.resume();
     }
 }

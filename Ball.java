@@ -6,8 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ball extends Actor
-{
+public class Ball extends Actor {
     private final int groundLevel = 70;
     
     private double time;
@@ -19,7 +18,7 @@ public class Ball extends Actor
     private double mass;
     private Force force;
     
-    private boolean paused = false;
+    private boolean paused = true;
     private boolean forceVisible = false;
     
     public Ball(double x, double y, double mass) {
@@ -41,13 +40,12 @@ public class Ball extends Actor
             getUserInput();
             updatePosition();
             setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - groundLevel);
+            time += dt;
         }
         
         if (forceVisible) {
             drawForce();
         }
-        
-        time += dt;
     }
     
     private void createImage() {
@@ -58,7 +56,7 @@ public class Ball extends Actor
     }
     
     public void addToWorld(World world) {
-        world.addObject(this, 20, world.getHeight() - groundLevel);
+        world.addObject(this, (int) position.getX(), world.getHeight() - groundLevel - (int) position.getY());
     }
     
     public void drawLine(double length, double angle) {
@@ -84,7 +82,7 @@ public class Ball extends Actor
         drawLine(length, Math.toDegrees(angle));
     }
     
-    public void updatePosition() {
+    private void updatePosition() {
         acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
         position.updateWithVelocity(velocity, dt, getWorld().getWidth());
@@ -122,5 +120,9 @@ public class Ball extends Actor
     
     public Acceleration getAcceleration() {
         return acceleration;
+    }
+    
+    public double getTime() {
+        return time;
     }
 }
