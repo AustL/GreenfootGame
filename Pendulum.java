@@ -14,7 +14,7 @@ public class Pendulum extends Actor
     private Position position = new Position();
     private Velocity velocity = new Velocity();
     private Acceleration acceleration = new Acceleration();
-    private final double dt = 0.01;
+    private final double dt = 0.1;
     
     private double radius;
     private double mass;
@@ -27,7 +27,7 @@ public class Pendulum extends Actor
     private boolean paused = true;
     
     public Pendulum(double radius, double theta, double mass) {
-        setPosition(radius, Math.toRadians(theta));
+        setPosition(radius, theta);
         
         this.radius = radius;
         this.mass = mass;
@@ -45,6 +45,7 @@ public class Pendulum extends Actor
             time += dt;
             updatePosition();
         }
+
         setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY());
         createImage();
     }
@@ -83,13 +84,10 @@ public class Pendulum extends Actor
         acceleration = nettForce.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
         position.updateWithVelocity(velocity, dt, getWorld().getWidth());
-        
-        setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY());
     }
     
     private Force calculateTension(double theta) {
         double magnitude = gravity.getMagnitude() * Math.sin(theta) - mass * velocity.getMagnitude() * velocity.getMagnitude() / radius;
-        
         double x = magnitude * Math.cos(theta);
         double y = magnitude * Math.sin(theta);
 

@@ -65,7 +65,7 @@ public class ProjectileMotion extends World
      * That is: create the initial objects and add them to the world.
      */
     private void prepare() {
-        startButton = new EllipseButton(948, 332, 187, 187, new Color(0, 148, 68, 0));
+        startButton = new EllipseButton(948, 329, 187, 187, new Color(0, 148, 68, 0));
         startButton.addToWorld(this);
         startButton.setHoverColour(new Color(0, 148, 68, 120));
         

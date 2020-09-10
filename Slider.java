@@ -47,7 +47,7 @@ public class Slider extends UIBase
     }
     
     public void drag(int mouseX) {
-        value = (mouseX - this.x) / (double) width * max + min;
+        value = (mouseX - this.x) / (double) width * (max - min) + min;
         value = Math.max(Math.min(value, max), min);
         createImage();
     }

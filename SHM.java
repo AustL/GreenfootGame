@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class SHM extends World
-{
+{ 
     private Button startButton;
     private Button backButton;
     private Button helpButton;
@@ -21,6 +21,8 @@ public class SHM extends World
     private Label angleLabel;
     
     private Pendulum pendulum;
+    
+    private boolean started = false;
 
     /**
      * Constructor for objects of class SHM.
@@ -49,11 +51,13 @@ public class SHM extends World
             Greenfoot.stop();
         }
         
-        pendulum.setPosition(radius.getValue(), angle.getValue() + 270);
+        if (!started) {
+            pendulum.setPosition(radius.getValue(), angle.getValue());
+        }
     }
     
     private void prepare() {
-        startButton = new EllipseButton(948, 332, 187, 187, new Color(0, 148, 68, 0));
+        startButton = new EllipseButton(948, 329, 187, 187, new Color(0, 148, 68, 0));
         startButton.addToWorld(this);
         startButton.setHoverColour(new Color(0, 148, 68, 120));
         
@@ -69,10 +73,10 @@ public class SHM extends World
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
         
-        angle = new Slider(139, 633, 336, 14, new Color(188, 190, 192), 20, -90, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        angle = new Slider(139, 633, 336, 14, new Color(188, 190, 192), 20, 180, 360, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         angle.addToWorld(this);
         
-        radius = new Slider(139, 687, 336, 14, new Color(188, 190, 192), 20, 0, 100, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        radius = new Slider(139, 687, 336, 14, new Color(188, 190, 192), 20, 0, 400, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         radius.addToWorld(this);
         
         angleLabel = new LinkedLabel(470, 621, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", angle.getValue()), 30, new Color(0, 148, 68));
@@ -81,7 +85,7 @@ public class SHM extends World
         radiusLabel = new LinkedLabel(470, 675, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", radius.getValue()), 30, new Color(0, 148, 68));
         radiusLabel.addToWorld(this);
         
-        pendulum = new Pendulum(40, 315, 1);
+        pendulum = new Pendulum(200, 270, 1);
         pendulum.addToWorld(this);
         
         time = new LinkedLabel(100, 400, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", pendulum.getTime()), 40, new Color(0, 148, 68));
@@ -90,5 +94,6 @@ public class SHM extends World
     
     private void begin() {
         pendulum.resume();
+        started = true;
     }
 }
