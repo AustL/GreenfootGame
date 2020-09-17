@@ -18,8 +18,7 @@ public class Menu extends World
      * Constructor for objects of class Menu.
      * 
      */
-    public Menu()
-    {    
+    public Menu() {    
         // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1);
         prepare();
@@ -40,17 +39,21 @@ public class Menu extends World
         projectileButton = new Button(205, 275, 300, 200, new Color(0, 148, 68, 0));
         projectileButton.addToWorld(this);
         projectileButton.setHoverColour(new Color(0, 148, 68, 120));
+        projectileButton.setBorderRadius(15);
         
         shmButton = new Button(695, 275, 300, 200, new Color(0, 148, 68, 0));
         shmButton.addToWorld(this);
         shmButton.setHoverColour(new Color(0, 148, 68, 120));
+        shmButton.setBorderRadius(15);
         
         aButton = new Button(205, 526, 300, 200, new Color(0, 148, 68, 0));
         aButton.addToWorld(this);
         aButton.setHoverColour(new Color(0, 148, 68, 120));
+        aButton.setBorderRadius(15);
         
         bButton = new Button(695, 526, 300, 200, new Color(0, 148, 68, 0));
         bButton.addToWorld(this);
         bButton.setHoverColour(new Color(0, 148, 68, 120));
+        bButton.setBorderRadius(15);
     }
 }

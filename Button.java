@@ -9,37 +9,10 @@ import java.lang.reflect.Method;
  */
 public class Button extends UIBase
 {
-    protected String text;
-    protected int fontSize;
-    protected Color textColour;
+    protected int radius = 0;
     
     protected Color normalColour;
     protected Color hoverColour;
-    // protected Color clickedColour;
-    
-    /**
-     * Constructor for a button with text
-     * @param x Top left coordinate x
-     * @param y Top left coordinate y
-     * @param width Width of button
-     * @param height Height of button
-     * @param colour Background colour of button
-     * @param text String to display on the button
-     * @param fontSize Font size of text
-     * @param textColour Colour of text
-     */
-    public Button(int x, int y, int width, int height, Color colour, String text, int fontSize, Color textColour) {
-        super(x, y, width, height, colour);
-        this.text = text;
-        this.fontSize = fontSize;
-        this.textColour = textColour;
-        
-        this.normalColour = colour;
-        this.hoverColour = colour;
-        // this.clickedColour = colour;
-        
-        createImage();
-    }
     
     /**
      * Constructor for a button with no text or image
@@ -51,14 +24,10 @@ public class Button extends UIBase
      */
     public Button(int x, int y, int width, int height, Color colour) {
         super(x, y, width, height, colour);
-        this.text = "";
-        this.fontSize = 0;
-        this.textColour = new Color(0, 0, 0, 0);
-        
+
         this.normalColour = colour;
         this.hoverColour = colour;
-        // this.clickedColour = colour;
-        
+
         createImage();
     }
     
@@ -82,24 +51,22 @@ public class Button extends UIBase
     protected void createImage() {
         GreenfootImage image = new GreenfootImage(width, height);
         image.setColor(colour);
-        image.fillRect(0, 0, width, height);
-        
-        GreenfootImage textImage = new GreenfootImage(text, fontSize, textColour, new Color(0, 0, 0, 0));
-        image.drawImage(textImage, (getWidth() - textImage.getWidth()) / 2, (getHeight() - textImage.getHeight()) / 2);
-        
+        image.fillRect(0, radius, width, height - radius * 2);
+        image.fillRect(radius, 0, width - radius * 2, height);
+        image.fillOval(0, 0, radius * 2, radius * 2);
+        image.fillOval(width - radius * 2, 0, radius * 2, radius * 2);
+        image.fillOval(0, height - radius * 2, radius * 2, radius * 2);
+        image.fillOval(width - radius * 2, height - radius * 2, radius * 2, radius * 2);
+
         setImage(image);
     }
     
     public void setColour(Color colour) { this.colour = colour; createImage(); }
-    
-    public void setText(String text) { this.text = text; createImage(); }
-    
+
     public void setHoverColour(Color colour) { this.hoverColour = colour; }
     
-    // public void setClickedColour(Color colour) { this.clickedColour = colour; }
-    
-    public String getText() { return text; }
-    
+    public void setBorderRadius(int radius) { this.radius = radius; }
+
     public boolean mouseDown() { return Greenfoot.mousePressed(this) && enabled; }
     
     public boolean mouseUp() { return Greenfoot.mouseClicked(this) && enabled; }

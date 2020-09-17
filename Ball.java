@@ -6,27 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ball extends Actor {
+public class Ball extends RigidBody {
     private final int groundLevel = 70;
     
-    private double time;
-    
-    private Position position = new Position();
-    private Velocity velocity = new Velocity();
-    private Acceleration acceleration = new Acceleration();
-    private final double dt = 0.1;
-    private double mass;
-    private Force force;
-    
-    private boolean paused = true;
-    private boolean forceVisible = false;
-    
     public Ball(double x, double y, double mass) {
-        this.position = new Position(x, y);
-        this.mass = mass;
+        super(x, y, mass);
         this.force = new Force(0, -9.8 * mass);
-        
-        time = 0;
         
         createImage();
     }
@@ -39,66 +24,30 @@ public class Ball extends Actor {
         if (!paused) {
             updatePosition();
             time += dt;
-        
-            if (forceVisible) {
-                drawForce();
-            }
         }
         
         setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - groundLevel);
+        createImage();
+        if (forceVisible) {
+            drawForce();
+        }
     }
     
-    private void createImage() {
+    protected void createImage() {
         GreenfootImage image = new GreenfootImage(40, 40);
         image.setColor(new Color(39, 170, 225));
         image.fillOval(0, 0, 40, 40);
         setImage(image);
     }
     
+    @Override
     public void addToWorld(World world) {
         world.addObject(this, (int) position.getX(), world.getHeight() - groundLevel - (int) position.getY());
-    }
-    
-    public void drawLine(double length, double angle) {
-        angle = Math.toRadians(angle);
-        
-        int x1 = getX();
-        int y1 = getY();
-        int x2 = x1 + (int) (length * Math.cos(angle));
-        int y2 = y1 - (int) (length * Math.sin(angle));
-        
-        GreenfootImage image = getWorld().getBackground();
-        
-        image.setColor(Color.BLACK);
-        image.drawLine(x1, y1, x2, y2);
-        
-        getWorld().setBackground(image);
-    }
-    
-    public void drawForce() {
-        double angle = force.getAngle();
-        double length = force.getMagnitude() * 5;
-
-        drawLine(length, Math.toDegrees(angle));
-    }
-    
-    private void updatePosition() {
-        acceleration = force.getAcceleration(mass);
-        velocity.updateWithAcceleration(acceleration, dt);
-        position.updateWithVelocity(velocity, dt, getWorld().getWidth());
-    }
-    
-    public void showForces() {
-        forceVisible = true;
     }
 
     public void setVelocity(double x, double y) {
         velocity = new Velocity(x, y);
     }
-    
-    public void pause() { paused = true; }
-    
-    public void resume() { paused = false; }
     
     public Position getPosition() {
         return position;
@@ -110,9 +59,5 @@ public class Ball extends Actor {
     
     public Acceleration getAcceleration() {
         return acceleration;
-    }
-    
-    public double getTime() {
-        return time;
     }
 }

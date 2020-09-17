@@ -40,9 +40,11 @@ public class Slider extends UIBase
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        if (Greenfoot.mouseDragged(this)) {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            if (mouse != null) drag(mouse.getX());
+        if (enabled) {
+            if (Greenfoot.mouseDragged(this)) {
+                MouseInfo mouse = Greenfoot.getMouseInfo();
+                if (mouse != null) drag(mouse.getX());
+            }
         }
     }
     
