@@ -10,9 +10,9 @@ public class Menu extends World
 {
     Button projectileButton;
     Button shmButton;
+    Button circularButton;
     
     // Change
-    Button aButton;
     Button bButton;
     /**
      * Constructor for objects of class Menu.
@@ -33,6 +33,10 @@ public class Menu extends World
         if (shmButton.mouseDown()) {
             Greenfoot.setWorld(new SHM());
         }
+        
+        if (circularButton.mouseDown()) {
+            Greenfoot.setWorld(new CircularMotion());
+        }
     }
     
     private void prepare() {
@@ -46,10 +50,10 @@ public class Menu extends World
         shmButton.setHoverColour(new Color(0, 148, 68, 120));
         shmButton.setBorderRadius(15);
         
-        aButton = new Button(205, 526, 300, 200, new Color(0, 148, 68, 0));
-        aButton.addToWorld(this);
-        aButton.setHoverColour(new Color(0, 148, 68, 120));
-        aButton.setBorderRadius(15);
+        circularButton = new Button(205, 526, 300, 200, new Color(0, 148, 68, 0));
+        circularButton.addToWorld(this);
+        circularButton.setHoverColour(new Color(0, 148, 68, 120));
+        circularButton.setBorderRadius(15);
         
         bButton = new Button(695, 526, 300, 200, new Color(0, 148, 68, 0));
         bButton.addToWorld(this);

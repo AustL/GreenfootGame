@@ -12,6 +12,10 @@ public class CircularMotion extends World {
     private Button helpButton;
     private Button exitButton;
     
+    private Satellite satellite;
+    
+    private boolean started = false;
+    
     /**
      * Constructor for objects of class CircularMotion.
      * 
@@ -21,6 +25,22 @@ public class CircularMotion extends World {
         super(1200, 800, 1);
         prepare();
         setBackground(new GreenfootImage("Circular Motion.png"));
+    }
+    
+    public void act() {
+        setBackground(new GreenfootImage("Circular Motion.png"));
+        
+        if (startButton.mouseDown()) {
+            begin();
+        }
+
+        if (backButton.mouseDown()) {
+            Greenfoot.setWorld(new Menu());
+        }
+        
+        if (exitButton.mouseUp()) {
+            Greenfoot.stop();
+        }
     }
     
     private void prepare() {
@@ -40,5 +60,10 @@ public class CircularMotion extends World {
         exitButton = new Button(1102, 10, 80, 80, new Color(57, 181, 74, 0));
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
+    }
+    
+    private void begin() {
+        started = true;
+        startButton.disable();
     }
 }
