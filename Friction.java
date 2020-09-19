@@ -1,34 +1,37 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CircularMotion here.
+ * Write a description of class Friction here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CircularMotion extends World {
+public class Friction extends World {
     private Button startButton;
     private Button backButton;
     private Button helpButton;
     private Button exitButton;
     
-    private Moon moon;
+    private Slider height;
+    private Slider length;
+    
+    private Ramp ramp;
     
     private boolean started = false;
     
     /**
-     * Constructor for objects of class CircularMotion.
+     * Constructor for objects of class Friction.
      * 
      */
-    public CircularMotion() {    
+    public Friction() {    
         // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1);
         prepare();
-        setBackground(new GreenfootImage("Circular Motion.png"));
+        setBackground(new GreenfootImage("Friction.png"));
     }
     
     public void act() {
-        setBackground(new GreenfootImage("Circular Motion.png"));
+        setBackground(new GreenfootImage("Friction.png"));
         
         if (startButton.mouseDown()) {
             begin();
@@ -40,6 +43,11 @@ public class CircularMotion extends World {
         
         if (exitButton.mouseUp()) {
             Greenfoot.stop();
+        }
+        
+        if (!started) {
+            ramp.setLength((int) length.getValue());
+            ramp.setHeight((int) height.getValue());
         }
     }
     
@@ -61,13 +69,18 @@ public class CircularMotion extends World {
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
         
-        moon = new Moon(600, 600, 1, 100);
-        moon.addToWorld(this);
+        height = new Slider(141, 210, 336, 14, new Color(188, 190, 192), 20, 150, 500, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        height.addToWorld(this);
+        
+        length = new Slider(141, 156, 336, 14, new Color(188, 190, 192), 20, 150, 1000, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        length.addToWorld(this);
+        
+        ramp = new Ramp();
+        ramp.addToWorld(this);
     }
     
     private void begin() {
         started = true;
         startButton.disable();
-        moon.resume();
     }
 }

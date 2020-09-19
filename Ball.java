@@ -34,10 +34,7 @@ public class Ball extends RigidBody {
     }
     
     protected void createImage() {
-        GreenfootImage image = new GreenfootImage(40, 40);
-        image.setColor(new Color(39, 170, 225));
-        image.fillOval(0, 0, 40, 40);
-        setImage(image);
+        getImage().scale(44, 44);
     }
     
     @Override

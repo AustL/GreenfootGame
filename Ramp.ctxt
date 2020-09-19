@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Ramp
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Ramp\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Ramp()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Ramp\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ createImage()
+comment4.params=world
+comment4.target=void\ addToWorld(greenfoot.World)
+comment5.params=length
+comment5.target=void\ setLength(int)
+comment6.params=height
+comment6.target=void\ setHeight(int)
+numComments=7
