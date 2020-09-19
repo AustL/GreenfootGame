@@ -86,5 +86,7 @@ public class Friction extends World {
     private void begin() {
         started = true;
         startButton.disable();
+        box.resume();
+        box.showForces();
     }
 }

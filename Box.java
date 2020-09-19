@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Box extends RigidBody {
-    private final int groundLevel = 70;
+    private final int groundLevel = 71;
     
     private Force normal;
     private Force friction;
@@ -15,13 +15,16 @@ public class Box extends RigidBody {
     
     private Ramp ramp;
     
+    private double mu;
+    
     public Box(Ramp ramp) {
         super(0, 0, 1);
-        this.force = new Force(0, -9.8);
+        this.gravity = new Force(0, -9.8);
         
         this.ramp = ramp;
         
         this.position = new Position(0, ramp.getHeight());
+        this.mu = 0;
 
         createImage();
     }
@@ -34,8 +37,10 @@ public class Box extends RigidBody {
         if (!paused) {
             updatePosition();
             time += dt;
+        } else {
+            position = new Position(0, ramp.getHeight()); 
         }
-        
+
         setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - groundLevel);
         createImage();
         if (forceVisible) {
@@ -68,6 +73,11 @@ public class Box extends RigidBody {
     
     @Override
     protected void updatePosition() {
+        normal = calculateNormal();
+        friction = calculateFriction();
+        
+        this.force = gravity.add(normal).add(friction);
+        
         acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
         position.updateWithVelocity(velocity, dt, getWorld().getWidth());
@@ -93,5 +103,23 @@ public class Box extends RigidBody {
     
     public Acceleration getAcceleration() {
         return acceleration;
+    }
+    
+    private Force calculateNormal() {
+        double theta = ramp.getAngle();
+        double magnitude = mass * 9.8 * Math.cos(theta);
+        double x = magnitude * Math.sin(theta);
+        double y = magnitude * Math.cos(theta);
+
+        return new Force(x, y);
+    }
+    
+    private Force calculateFriction() {
+        double theta = 180 - ramp.getAngle();
+        double magnitude = mu * calculateNormal().getMagnitude();
+        double x = magnitude * Math.cos(theta);
+        double y = magnitude * Math.sin(theta);
+
+        return new Force(x, y);
     }
 }
