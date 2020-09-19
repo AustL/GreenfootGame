@@ -13,7 +13,7 @@ public class Menu extends World
     Button circularButton;
     
     // Change
-    Button bButton;
+    Button frictionButton;
     /**
      * Constructor for objects of class Menu.
      * 
@@ -37,6 +37,10 @@ public class Menu extends World
         if (circularButton.mouseDown()) {
             Greenfoot.setWorld(new CircularMotion());
         }
+        
+        if (frictionButton.mouseDown()) {
+            Greenfoot.setWorld(new Friction());
+        }
     }
     
     private void prepare() {
@@ -55,9 +59,9 @@ public class Menu extends World
         circularButton.setHoverColour(new Color(0, 148, 68, 120));
         circularButton.setBorderRadius(15);
         
-        bButton = new Button(695, 526, 300, 200, new Color(0, 148, 68, 0));
-        bButton.addToWorld(this);
-        bButton.setHoverColour(new Color(0, 148, 68, 120));
-        bButton.setBorderRadius(15);
+        frictionButton = new Button(695, 526, 300, 200, new Color(0, 148, 68, 0));
+        frictionButton.addToWorld(this);
+        frictionButton.setHoverColour(new Color(0, 148, 68, 120));
+        frictionButton.setBorderRadius(15);
     }
 }
