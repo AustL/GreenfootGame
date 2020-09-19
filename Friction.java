@@ -16,6 +16,7 @@ public class Friction extends World {
     private Slider length;
     
     private Ramp ramp;
+    private Box box;
     
     private boolean started = false;
     
@@ -77,6 +78,9 @@ public class Friction extends World {
         
         ramp = new Ramp();
         ramp.addToWorld(this);
+        
+        box = new Box(ramp);
+        box.addToWorld(this);
     }
     
     private void begin() {

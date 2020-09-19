@@ -94,7 +94,7 @@ public class ProjectileMotion extends World
         velocityLabel = new LinkedLabel(470, 198, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", velocity.getValue()), 30, new Color(0, 148, 68));
         velocityLabel.addToWorld(this);
         
-        ball = new Ball(20, 0, 1);
+        ball = new Ball(20, 0);
         ball.addToWorld(this);
         
         time = new LinkedLabel(100, 500, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()), 40, new Color(0, 148, 68));

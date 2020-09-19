@@ -9,9 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Ball extends RigidBody {
     private final int groundLevel = 70;
     
-    public Ball(double x, double y, double mass) {
-        super(x, y, mass);
-        this.force = new Force(0, -9.8 * mass);
+    public Ball(double x, double y) {
+        super(x, y, 1);
+        this.force = new Force(0, -9.8);
         
         createImage();
     }

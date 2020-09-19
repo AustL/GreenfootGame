@@ -85,4 +85,16 @@ public class Pendulum extends RigidBody
 
         return new Force(x, y);
     }
+    
+    public Position getPosition() {
+        return position;
+    }
+    
+    public Velocity getVelocity() {
+        return velocity;
+    }
+    
+    public Acceleration getAcceleration() {
+        return acceleration;
+    }
 }

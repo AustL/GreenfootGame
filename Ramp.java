@@ -7,8 +7,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Ramp extends Actor {
-    private int height = 200;
-    private int length = 500;
+    private int height = 325;
+    private int length = 575;
     private int[] x, y;
 
     public Ramp() {
@@ -46,4 +46,10 @@ public class Ramp extends Actor {
     public void setHeight(int height) {
         this.height = height;
     }
+    
+    public int getHeight() { return height; }
+    
+    public int getLength() { return length; }
+    
+    public double getAngle() { return Math.atan2(height, length); }
 }
