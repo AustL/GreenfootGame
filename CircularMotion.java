@@ -12,7 +12,7 @@ public class CircularMotion extends World {
     private Button helpButton;
     private Button exitButton;
     
-    private Satellite satellite;
+    private Moon moon;
     
     private boolean started = false;
     
@@ -60,10 +60,14 @@ public class CircularMotion extends World {
         exitButton = new Button(1102, 10, 80, 80, new Color(57, 181, 74, 0));
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
+        
+        moon = new Moon(600, 340, 1, 100);
+        moon.addToWorld(this);
     }
     
     private void begin() {
         started = true;
         startButton.disable();
+        moon.resume();
     }
 }

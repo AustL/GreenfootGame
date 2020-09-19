@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=Satellite
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Satellite\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=x\ y\ mass\ radius
-comment1.target=Satellite(double,\ double,\ double,\ double)
-comment2.params=
-comment2.target=void\ createImage()
-numComments=3
