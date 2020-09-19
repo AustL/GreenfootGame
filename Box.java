@@ -38,11 +38,12 @@ public class Box extends RigidBody {
             updatePosition();
             time += dt;
         } else {
-            position = new Position(0, ramp.getHeight()); 
+            position = new Position(0, ramp.getHeight());
+            setRotation((int) Math.toDegrees(ramp.getAngle()));
         }
 
         setLocation((int) position.getX(), getWorld().getHeight() - (int) position.getY() - groundLevel);
-        createImage();
+
         if (forceVisible) {
             drawForce();
         }
@@ -81,11 +82,15 @@ public class Box extends RigidBody {
         acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
         position.updateWithVelocity(velocity, dt);
+        
+        if (position.getY() == 0) {
+            setRotation(0);
+            hideForces();
+        }
     }
     
     protected void createImage() {
         getImage().scale(44, 44);
-        setRotation((int) Math.toDegrees(ramp.getAngle()));
     }
     
     @Override

@@ -16,6 +16,8 @@ public class Friction extends World {
     private Slider length;
     private Slider mu;
     
+    private Label time;
+    
     private Ramp ramp;
     private Box box;
     
@@ -86,6 +88,9 @@ public class Friction extends World {
         
         box = new Box(ramp);
         box.addToWorld(this);
+        
+        time = new LinkedLabel(100, 500, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", box.getTime()), 40, new Color(0, 148, 68));
+        time.addToWorld(this);
     }
     
     private void begin() {

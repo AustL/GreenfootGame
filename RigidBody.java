@@ -77,6 +77,10 @@ public abstract class RigidBody extends Actor
         forceVisible = true;
     }
     
+    public void hideForces() {
+        forceVisible = false;
+    }
+    
     public void pause() { paused = true; }
     
     public void resume() { paused = false; }
