@@ -14,6 +14,7 @@ public class Friction extends World {
     
     private Slider height;
     private Slider length;
+    private Slider mu;
     
     private Ramp ramp;
     private Box box;
@@ -49,6 +50,7 @@ public class Friction extends World {
         if (!started) {
             ramp.setLength((int) length.getValue());
             ramp.setHeight((int) height.getValue());
+            box.setMu(mu.getValue());
         }
     }
     
@@ -75,6 +77,9 @@ public class Friction extends World {
         
         length = new Slider(141, 156, 336, 14, new Color(188, 190, 192), 20, 150, 1000, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         length.addToWorld(this);
+        
+        mu = new Slider(141, 264, 336, 14, new Color(188, 190, 192), 20, 0, 1, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
+        mu.addToWorld(this);
         
         ramp = new Ramp();
         ramp.addToWorld(this);

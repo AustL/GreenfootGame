@@ -28,7 +28,7 @@ public class Ramp extends Actor {
         
         GreenfootImage image = new GreenfootImage(length, height);
         
-        image.setColor(new Color(57, 181, 74));
+        image.setColor(new Color(57, 181, 74, 150));
         image.fillPolygon(x, y, 3);
         setImage(image);
         

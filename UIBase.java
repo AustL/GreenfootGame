@@ -6,8 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class UIBase extends Actor
-{
+public class UIBase extends Actor {
     protected int x;
     protected int y;
     protected int width;

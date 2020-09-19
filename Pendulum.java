@@ -66,7 +66,7 @@ public class Pendulum extends RigidBody
         force = gravity.add(tension);
         acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
-        position.updateWithVelocity(velocity, dt, getWorld().getWidth());
+        position.updateWithVelocity(velocity, dt);
     }
     
     public void setPosition(double radius, double theta) {

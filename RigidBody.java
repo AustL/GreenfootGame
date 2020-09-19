@@ -43,7 +43,7 @@ public abstract class RigidBody extends Actor
     protected void updatePosition() {
         acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
-        position.updateWithVelocity(velocity, dt, getWorld().getWidth());
+        position.updateWithVelocity(velocity, dt);
     }
     
     public void addToWorld(World world) {

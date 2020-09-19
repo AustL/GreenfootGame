@@ -2,7 +2,7 @@
 comment0.target=Slider
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Slider\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=x\ y\ width\ height\ colour\ r\ min\ max\ handleColour\ handleBorderColour\ borderColour\ border
-comment1.target=Slider(int,\ int,\ int,\ int,\ greenfoot.Color,\ int,\ int,\ int,\ greenfoot.Color,\ greenfoot.Color,\ greenfoot.Color,\ int)
+comment1.target=Slider(int,\ int,\ int,\ int,\ greenfoot.Color,\ int,\ double,\ double,\ greenfoot.Color,\ greenfoot.Color,\ greenfoot.Color,\ int)
 comment2.params=
 comment2.target=void\ act()
 comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Slider\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n

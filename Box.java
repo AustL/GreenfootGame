@@ -80,7 +80,7 @@ public class Box extends RigidBody {
         
         acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
-        position.updateWithVelocity(velocity, dt, getWorld().getWidth());
+        position.updateWithVelocity(velocity, dt);
     }
     
     protected void createImage() {
@@ -115,11 +115,16 @@ public class Box extends RigidBody {
     }
     
     private Force calculateFriction() {
-        double theta = 180 - ramp.getAngle();
+        double theta = Math.PI - ramp.getAngle();
         double magnitude = mu * calculateNormal().getMagnitude();
+        magnitude = Math.min(Math.abs(gravity.getMagnitude() * Math.sin(theta)), magnitude);
         double x = magnitude * Math.cos(theta);
         double y = magnitude * Math.sin(theta);
 
         return new Force(x, y);
+    }
+    
+    public void setMu(double mu) {
+        this.mu = mu;
     }
 }

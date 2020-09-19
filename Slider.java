@@ -18,9 +18,7 @@ public class Slider extends UIBase
     
     private double value;
     
-    private boolean selected = false;
-    
-    public Slider(int x, int y, int width, int height, Color colour, int r, int min, int max, Color handleColour, Color handleBorderColour, Color borderColour, int border) {
+    public Slider(int x, int y, int width, int height, Color colour, int r, double min, double max, Color handleColour, Color handleBorderColour, Color borderColour, int border) {
         super(x, y, width, height, colour);
         this.r = r;
         this.min = min;

@@ -42,7 +42,7 @@ public class Moon extends RigidBody
         force = new Force(magnitude * Math.cos(theta), magnitude * Math.sin(theta));
         acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
-        position.updateWithVelocity(velocity, dt, getWorld().getWidth());
+        position.updateWithVelocity(velocity, dt);
     }
     
     public void setPosition(double mass, double radius) {
