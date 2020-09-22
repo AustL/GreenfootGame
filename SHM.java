@@ -6,10 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SHM extends World
-{ 
+public class SHM extends World { 
     private Button startButton;
     private Button backButton;
+    private Button resetButton;
     private Button helpButton;
     private Button exitButton;
     
@@ -28,8 +28,7 @@ public class SHM extends World
      * Constructor for objects of class SHM.
      * 
      */
-    public SHM()
-    {    
+    public SHM() {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1);
         prepare();
@@ -45,6 +44,10 @@ public class SHM extends World
         
         if (backButton.mouseDown()) {
             Greenfoot.setWorld(new Menu());
+        }
+        
+        if (resetButton.mouseDown()) {
+            Greenfoot.setWorld(new SHM());
         }
         
         if (exitButton.mouseUp()) {
@@ -66,6 +69,10 @@ public class SHM extends World
         backButton.addToWorld(this);
         backButton.setHoverColour(new Color(57, 181, 74, 140));
         
+        resetButton = new Button(875, 10, 80, 80, new Color(57, 181, 74, 0));
+        resetButton.addToWorld(this);
+        resetButton.setHoverColour(new Color(57, 181, 74, 140));
+        
         helpButton = new Button(988, 10, 80, 80, new Color(57, 181, 74, 0));
         helpButton.addToWorld(this);
         helpButton.setHoverColour(new Color(57, 181, 74, 140));
@@ -86,7 +93,7 @@ public class SHM extends World
         radiusLabel = new LinkedLabel(470, 675, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", radius.getValue()), 30, new Color(0, 148, 68));
         radiusLabel.addToWorld(this);
         
-        pendulum = new Pendulum(200, 270, 1);
+        pendulum = new Pendulum(200, 270);
         pendulum.addToWorld(this);
         
         time = new LinkedLabel(100, 400, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", pendulum.getTime()), 40, new Color(0, 148, 68));

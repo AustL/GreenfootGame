@@ -9,12 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Friction extends World {
     private Button startButton;
     private Button backButton;
+    private Button resetButton;
     private Button helpButton;
     private Button exitButton;
     
     private Slider height;
     private Slider length;
     private Slider mu;
+    
+    private Label heightLabel;
+    private Label lengthLabel;
+    private Label muLabel;
     
     private Label time;
     
@@ -45,6 +50,10 @@ public class Friction extends World {
             Greenfoot.setWorld(new Menu());
         }
         
+        if (resetButton.mouseDown()) {
+            Greenfoot.setWorld(new Friction());
+        }
+        
         if (exitButton.mouseUp()) {
             Greenfoot.stop();
         }
@@ -66,6 +75,10 @@ public class Friction extends World {
         backButton.addToWorld(this);
         backButton.setHoverColour(new Color(57, 181, 74, 140));
         
+        resetButton = new Button(875, 10, 80, 80, new Color(57, 181, 74, 0));
+        resetButton.addToWorld(this);
+        resetButton.setHoverColour(new Color(57, 181, 74, 140));
+        
         helpButton = new Button(988, 10, 80, 80, new Color(57, 181, 74, 0));
         helpButton.addToWorld(this);
         helpButton.setHoverColour(new Color(57, 181, 74, 140));
@@ -82,6 +95,15 @@ public class Friction extends World {
         
         mu = new Slider(141, 264, 336, 14, new Color(188, 190, 192), 20, 0, 1, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         mu.addToWorld(this);
+        
+        heightLabel = new LinkedLabel(470, 144, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.01f", height.getValue()), 30, new Color(0, 148, 68));
+        heightLabel.addToWorld(this);
+        
+        lengthLabel = new LinkedLabel(470, 198, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.01f", length.getValue()), 30, new Color(0, 148, 68));
+        lengthLabel.addToWorld(this);
+        
+        muLabel = new LinkedLabel(470, 252, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.03f", mu.getValue()), 30, new Color(0, 148, 68));
+        muLabel.addToWorld(this);
         
         ramp = new Ramp();
         ramp.addToWorld(this);

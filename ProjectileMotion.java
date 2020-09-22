@@ -8,25 +8,27 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ProjectileMotion extends World
 {
-    private final double velocityToLength = 0.75;
+    private final double velocityToLength = 1.5;
     
     private Button startButton;
     private Button backButton;
+    private Button resetButton;
     private Button helpButton;
     private Button exitButton;
 
     private Slider angle;
     private Slider velocity;
     
-    private Label time;
     private Label velocityLabel;
     private Label angleLabel;
     
+    private Label time;
+    private Label x;
+    private Label v;
+    private Label a;
+    
     private Ball ball;
 
-    private double maxHeight = 0;
-    private double maxRange = 0;
-    
     private boolean started = false;
     /**
      * Constructor for objects of class ProjectileMotion.
@@ -48,6 +50,10 @@ public class ProjectileMotion extends World
 
         if (backButton.mouseDown()) {
             Greenfoot.setWorld(new Menu());
+        }
+        
+        if (resetButton.mouseDown()) {
+            Greenfoot.setWorld(new ProjectileMotion());
         }
         
         if (exitButton.mouseUp()) {
@@ -74,6 +80,10 @@ public class ProjectileMotion extends World
         backButton.addToWorld(this);
         backButton.setHoverColour(new Color(57, 181, 74, 140));
         
+        resetButton = new Button(875, 10, 80, 80, new Color(57, 181, 74, 0));
+        resetButton.addToWorld(this);
+        resetButton.setHoverColour(new Color(57, 181, 74, 140));
+        
         helpButton = new Button(988, 10, 80, 80, new Color(57, 181, 74, 0));
         helpButton.addToWorld(this);
         helpButton.setHoverColour(new Color(57, 181, 74, 140));
@@ -97,8 +107,17 @@ public class ProjectileMotion extends World
         ball = new Ball(20, 0);
         ball.addToWorld(this);
         
-        time = new LinkedLabel(100, 500, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()), 40, new Color(0, 148, 68));
+        time = new LinkedLabel(955, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
+        
+        x = new LinkedLabel(955, 95, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getPosition().getX() - 20) + " m, " + String.format("%.01f", ball.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
+        x.addToWorld(this);
+        
+        v = new LinkedLabel(955, 145, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", ball.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
+        v.addToWorld(this);
+        
+        a = new LinkedLabel(955, 195, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", ball.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
+        a.addToWorld(this);
     }
     
     private void begin() {

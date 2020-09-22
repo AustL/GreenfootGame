@@ -15,11 +15,11 @@ public class Pendulum extends RigidBody
     private Force tension;
     private Force gravity;
 
-    public Pendulum(double radius, double theta, double mass) {
-        super(anchorX + radius * Math.cos(Math.toRadians(theta)), anchorY + radius * Math.sin(Math.toRadians(theta)), mass);
+    public Pendulum(double radius, double theta) {
+        super(anchorX + radius * Math.cos(Math.toRadians(theta)), anchorY + radius * Math.sin(Math.toRadians(theta)), 1);
 
         this.radius = radius;
-        this.gravity = new Force(0, -9.8 * mass);
+        this.gravity = new Force(0, -9.8);
         this.tension = calculateTension(theta);
     }
 
@@ -84,17 +84,5 @@ public class Pendulum extends RigidBody
         double y = magnitude * Math.sin(theta);
 
         return new Force(x, y);
-    }
-    
-    public Position getPosition() {
-        return position;
-    }
-    
-    public Velocity getVelocity() {
-        return velocity;
-    }
-    
-    public Acceleration getAcceleration() {
-        return acceleration;
     }
 }

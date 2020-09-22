@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Ramp extends Actor {
     private int height = 325;
     private int length = 575;
-    private int[] x, y;
 
     public Ramp() {
     }
@@ -23,8 +22,8 @@ public class Ramp extends Actor {
     }
     
     public void createImage() {
-        x = new int[]{0, 0, length};
-        y = new int[]{0, height, height};
+        int[] x = new int[]{0, 0, length};
+        int[] y = new int[]{0, height, height};
         
         GreenfootImage image = new GreenfootImage(length, height);
         

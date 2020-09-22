@@ -50,9 +50,9 @@ public class Label extends UIBase
         setImage(image);
     }
     
-    public void setColour(Color colour) { this.colour = colour; createImage(); }
+    public void setColour(Color colour) { this.colour = colour; }
     
-    public void setText(String text) { this.text = text; createImage(); }
+    public void setText(String text) { this.text = text; }
 
     public String getText() { return text; }
 }

@@ -83,9 +83,21 @@ public abstract class RigidBody extends Actor
     
     public void pause() { paused = true; }
     
-    public void resume() { paused = false; }
+    public void resume() { paused = false   ; }
     
     public double getTime() {
         return time;
+    }
+    
+    public Position getPosition() {
+        return position;
+    }
+    
+    public Velocity getVelocity() {
+        return velocity;
+    }
+    
+    public Acceleration getAcceleration() {
+        return acceleration;
     }
 }

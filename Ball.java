@@ -45,16 +45,4 @@ public class Ball extends RigidBody {
     public void setVelocity(double x, double y) {
         velocity = new Velocity(x, y);
     }
-    
-    public Position getPosition() {
-        return position;
-    }
-    
-    public Velocity getVelocity() {
-        return velocity;
-    }
-    
-    public Acceleration getAcceleration() {
-        return acceleration;
-    }
 }

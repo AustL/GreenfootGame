@@ -1,10 +1,8 @@
 #BlueJ class context
 comment0.target=Pendulum
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Pendulum\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=radius\ theta\ mass
-comment1.target=Pendulum(double,\ double,\ double)
-comment10.params=
-comment10.target=Acceleration\ getAcceleration()
+comment1.params=radius\ theta
+comment1.target=Pendulum(double,\ double)
 comment2.params=world
 comment2.target=void\ addToWorld(greenfoot.World)
 comment3.params=
@@ -17,8 +15,4 @@ comment6.params=radius\ theta
 comment6.target=void\ setPosition(double,\ double)
 comment7.params=theta
 comment7.target=Force\ calculateTension(double)
-comment8.params=
-comment8.target=Position\ getPosition()
-comment9.params=
-comment9.target=Velocity\ getVelocity()
-numComments=11
+numComments=8

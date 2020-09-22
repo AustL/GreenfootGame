@@ -77,7 +77,7 @@ public class Box extends RigidBody {
         normal = calculateNormal();
         friction = calculateFriction();
         
-        this.force = gravity.add(normal).add(friction);
+        force = gravity.add(normal).add(friction);
         
         acceleration = force.getAcceleration(mass);
         velocity.updateWithAcceleration(acceleration, dt);
@@ -97,19 +97,7 @@ public class Box extends RigidBody {
     public void addToWorld(World world) {
         world.addObject(this, (int) position.getX(), world.getHeight() - groundLevel - (int) position.getY());
     }
-    
-    public Position getPosition() {
-        return position;
-    }
-    
-    public Velocity getVelocity() {
-        return velocity;
-    }
-    
-    public Acceleration getAcceleration() {
-        return acceleration;
-    }
-    
+
     private Force calculateNormal() {
         double theta = ramp.getAngle();
         double magnitude = mass * 9.8 * Math.cos(theta);

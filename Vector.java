@@ -6,7 +6,6 @@
  */
 public class Vector
 {
-    // instance variables - replace the example below with your own
     protected double x;
     protected double y;
 
