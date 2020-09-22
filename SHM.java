@@ -16,9 +16,13 @@ public class SHM extends World {
     private Slider angle;
     private Slider radius;
     
-    private Label time;
     private Label radiusLabel;
     private Label angleLabel;
+    
+    private Label time;
+    private Label x;
+    private Label v;
+    private Label a;
     
     private Pendulum pendulum;
     
@@ -96,8 +100,17 @@ public class SHM extends World {
         pendulum = new Pendulum(200, 270);
         pendulum.addToWorld(this);
         
-        time = new LinkedLabel(100, 400, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", pendulum.getTime()), 40, new Color(0, 148, 68));
+        time = new LinkedLabel(955, 478, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", pendulum.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
+        
+        x = new LinkedLabel(955, 528, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getPosition().getX()) + " m, " + String.format("%.01f", pendulum.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
+        x.addToWorld(this);
+        
+        v = new LinkedLabel(955, 578, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", pendulum.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
+        v.addToWorld(this);
+        
+        a = new LinkedLabel(955, 628, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", pendulum.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
+        a.addToWorld(this);
     }
     
     private void begin() {

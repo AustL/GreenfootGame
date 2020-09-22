@@ -22,6 +22,9 @@ public class Friction extends World {
     private Label muLabel;
     
     private Label time;
+    private Label x;
+    private Label v;
+    private Label a;
     
     private Ramp ramp;
     private Box box;
@@ -111,8 +114,17 @@ public class Friction extends World {
         box = new Box(ramp);
         box.addToWorld(this);
         
-        time = new LinkedLabel(100, 500, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", box.getTime()), 40, new Color(0, 148, 68));
+        time = new LinkedLabel(955, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", box.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
+        
+        x = new LinkedLabel(955, 95, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getPosition().getX()) + " m, " + String.format("%.01f", box.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
+        x.addToWorld(this);
+        
+        v = new LinkedLabel(955, 145, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", box.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
+        v.addToWorld(this);
+        
+        a = new LinkedLabel(955, 195, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", box.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
+        a.addToWorld(this);
     }
     
     private void begin() {
