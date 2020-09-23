@@ -2,25 +2,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.function.Supplier;
 
 /**
- * Write a description of class LinkedLabel here.
+ * Class representing linked labels
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Austin
+ * @version 0
  */
 public class LinkedLabel extends Label
 {
     private Supplier<String> supplier;
     
     /**
-     * Constructor for a label linked to a method
-     * @param x Top left coordinate x
-     * @param y Top left coordinate y
-     * @param width Width of label
-     * @param height Height of label
-     * @param colour Background colour of label
-     * @param text String to display on the label
-     * @param fontSize Font size of text
-     * @param textColour Colour of text
+     * Constructor for a label linked to a supplier
+     * 
+     * @param x             Top left coordinate x
+     * @param y             Top left coordinate y
+     * @param width         Width of label
+     * @param height        Height of label
+     * @param colour        Background colour of label
+     * @param supplier      A string supplier that returns a string determined by a lambda function
+     * @param fontSize      Font size of text
+     * @param textColour    Colour of text
      */
     public LinkedLabel(int x, int y, int width, int height, Color colour, Supplier<String> supplier, int fontSize, Color textColour) {
         super(x, y, width, height, colour, "", fontSize, textColour);
@@ -29,6 +30,10 @@ public class LinkedLabel extends Label
         createImage();
     }
     
+    /**
+     * Draw the label as a rectangle to the screen
+     * Display the text from the supplier in the centre of the rectangle 
+     */
     protected void createImage() {
         GreenfootImage image = new GreenfootImage(width, height);
         image.setColor(colour);

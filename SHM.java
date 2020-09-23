@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SHM here.
+ * World representing the simple harmonic motion simulation
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Austin
+ * @version 0
  */
 public class SHM extends World { 
     private Button startButton;
@@ -30,7 +30,6 @@ public class SHM extends World {
 
     /**
      * Constructor for objects of class SHM.
-     * 
      */
     public SHM() {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -39,6 +38,9 @@ public class SHM extends World {
         setBackground(new GreenfootImage("SHM.png"));
     }
     
+    /**
+     * Listen for mouse input for sliders and buttons
+     */
     public void act() {
         setBackground(new GreenfootImage("SHM.png"));
         
@@ -58,17 +60,22 @@ public class SHM extends World {
             Greenfoot.stop();
         }
         
+        // Sets the position of the pendulum for live feedback
         if (!started) {
             pendulum.setPosition(radius.getValue(), angle.getValue());
         }
     }
     
+    /**
+     * Create all objects and add them to the world
+     */
     private void prepare() {
         startButton = new Button(948, 329, 187, 187, new Color(0, 148, 68, 0));
         startButton.addToWorld(this);
         startButton.setHoverColour(new Color(0, 148, 68, 120));
         startButton.setBorderRadius(94);
         
+        // Top bar buttons
         backButton = new Button(33, 10, 80, 80, new Color(57, 181, 74, 0));
         backButton.addToWorld(this);
         backButton.setHoverColour(new Color(57, 181, 74, 140));
@@ -85,12 +92,14 @@ public class SHM extends World {
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
         
+        // Sliders
         angle = new Slider(139, 633, 336, 14, new Color(188, 190, 192), 20, 210, 330, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         angle.addToWorld(this);
         
         radius = new Slider(139, 687, 336, 14, new Color(188, 190, 192), 20, 0, 400, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         radius.addToWorld(this);
         
+        // Labels for sliders
         angleLabel = new LinkedLabel(470, 621, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", angle.getValue()), 30, new Color(0, 148, 68));
         angleLabel.addToWorld(this);
         
@@ -100,6 +109,7 @@ public class SHM extends World {
         pendulum = new Pendulum(200, 270);
         pendulum.addToWorld(this);
         
+        // Output labels
         time = new LinkedLabel(955, 478, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", pendulum.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
         
@@ -113,6 +123,9 @@ public class SHM extends World {
         a.addToWorld(this);
     }
     
+    /**
+     * Starts the simulation with given inputs
+     */
     private void begin() {
         pendulum.resume();
         started = true;

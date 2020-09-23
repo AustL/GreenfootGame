@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Acceleration
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Acceleration\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ representing\ acceleration\ vectors\r\n\ \r\n\ @author\ Austin\r\n\ @version\ 0\r\n
 comment1.params=x\ y
 comment1.target=Acceleration(double,\ double)
+comment1.text=\r\n\ Constructor\ for\ Acceleration\ with\ starting\ values\r\n\ \r\n\ @param\ x\ \ \ \ \ The\ x\ component\ of\ acceleration\r\n\ @param\ y\ \ \ \ \ The\ y\ component\ of\ acceleration\r\n
 comment2.params=
 comment2.target=Acceleration()
+comment2.text=\r\n\ Constructor\ for\ a\ 0\ Acceleration\r\n
 numComments=3

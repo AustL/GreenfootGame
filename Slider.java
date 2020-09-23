@@ -6,8 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Slider extends UIBase
-{
+public class Slider extends UIBase {
     private int r;
     private double min;
     private double max;
@@ -18,6 +17,22 @@ public class Slider extends UIBase
     
     private double value;
     
+    /**
+     * Constructor for Slider
+     * 
+     * @param x                     Top left coordinate x
+     * @param y                     Top left coordinate y
+     * @param width                 Width of slider
+     * @param height                Height of slider
+     * @param colour                Background colour of slider
+     * @param r                     Radius of slider handle
+     * @param min                   Minimum value of the slider
+     * @param max                   Maxiumum value of the slider
+     * @param handleColour          Colour of the handle
+     * @param handleBorderColour    Border colour of the handle
+     * @param borderColour          Border colour of the slider
+     * @param border                Border width
+     */
     public Slider(int x, int y, int width, int height, Color colour, int r, double min, double max, Color handleColour, Color handleBorderColour, Color borderColour, int border) {
         super(x, y, width, height, colour);
         this.r = r;
@@ -34,8 +49,7 @@ public class Slider extends UIBase
     }
     
     /**
-     * Act - do whatever the Slider wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Listen for a mouse drag
      */
     public void act() {
         if (enabled) {
@@ -46,12 +60,21 @@ public class Slider extends UIBase
         }
     }
     
+    /**
+     * Update the value of the slider based on the mouse's x-position
+     * 
+     * @param mouseX    The x-coordinate of the mouse
+     */
     public void drag(int mouseX) {
         value = (mouseX - this.x) / (double) width * (max - min) + min;
         value = Math.max(Math.min(value, max), min);
         createImage();
     }
     
+    /**
+     * Draw the rectangle and border for the slider
+     * Draw the circle and border for the handle
+     */
     private void createImage() {
         GreenfootImage image = new GreenfootImage(width, r * 2);
         image.setColor(borderColour);
@@ -65,5 +88,10 @@ public class Slider extends UIBase
         setImage(image);
     }
     
+    /**
+     * Get the value of the slider
+     * 
+     * @return      The value of the slider rounded to 2 decimal places
+     */
     public double getValue() { return Math.round(value * 100.0) / 100.0; }
 }

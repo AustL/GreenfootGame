@@ -1,12 +1,16 @@
 #BlueJ class context
 comment0.target=Force
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Force\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ representing\ force\ vectors\r\n\ \r\n\ @author\ Austin\ \r\n\ @version\ 0\r\n
 comment1.params=x\ y
 comment1.target=Force(double,\ double)
+comment1.text=\r\n\ Constructor\ for\ Force\ with\ starting\ values\r\n\ \r\n\ @param\ x\ \ \ \ \ The\ x\ component\ of\ force\r\n\ @param\ y\ \ \ \ \ The\ y\ component\ of\ force\r\n
 comment2.params=
 comment2.target=Force()
+comment2.text=\r\n\ Constructor\ for\ a\ 0\ Force\r\n
 comment3.params=mass
 comment3.target=Acceleration\ getAcceleration(double)
+comment3.text=\r\n\ Gets\ the\ acceleration\ of\ a\ mass\ when\ acted\ upon\ by\ the\ force\r\n\ \r\n\ @param\ mass\ \ The\ mass\ of\ the\ object\r\n\ @return\ \ \ \ \ \ The\ acceleration\r\n
 comment4.params=other
 comment4.target=Force\ add(Force)
+comment4.text=\r\n\ Add\ two\ Forces.\ Can\ be\ chained\r\n\ \r\n\ @param\ other\ \ \ \ \ Another\ force\r\n\ @return\ \ \ \ \ \ \ \ \ \ The\ resultant\ force\r\n
 numComments=5

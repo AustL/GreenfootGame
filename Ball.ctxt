@@ -1,15 +1,19 @@
 #BlueJ class context
 comment0.target=Ball
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Ball\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ representing\ the\ ball\ object\r\n\ \r\n\ @author\ Austin\r\n\ @version\ 0\r\n
 comment1.params=x\ y
 comment1.target=Ball(double,\ double)
+comment1.text=\r\n\ Constructor\ for\ Ball\r\n\ \r\n\ @param\ x\ \ \ \ \ The\ initial\ x-position\ of\ the\ ball\r\n\ @param\ y\ \ \ \ \ The\ initial\ y-position\ of\ the\ ball\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Ball\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.text=\r\n\ Update\ the\ ball's\ position\ and\ draw\ the\ image\r\n
 comment3.params=
 comment3.target=void\ createImage()
+comment3.text=\r\n\ Rescale\ the\ tennis\ ball\ image\ to\ 44\ x\ 44\ pixels\r\n
 comment4.params=world
 comment4.target=void\ addToWorld(greenfoot.World)
+comment4.text=\r\n\ Adds\ the\ ball\ to\ the\ world,\ accounting\ for\ the\ ground\r\n\ \r\n\ @param\ world\ The\ world\ to\ add\ the\ ball\ to\r\n
 comment5.params=x\ y
 comment5.target=void\ setVelocity(double,\ double)
+comment5.text=\r\n\ Set\ the\ velocity\ of\ the\ ball\r\n\ \r\n\ @param\ x\ \ \ \ \ The\ x-velocity\ of\ the\ ball\r\n\ @param\ y\ \ \ \ \ The\ y-velocity\ of\ the\ ball\r\n
 numComments=6

@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=Vector
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Vector\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Base\ class\ for\ all\ vector\ measurements\r\n\ \r\n\ @author\ Austin\r\n\ @version\ 0\r\n
 comment1.params=x\ y
 comment1.target=Vector(double,\ double)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Vector\r\n
+comment1.text=\r\n\ Constructor\ for\ Vector\r\n\ \r\n\ @param\ x\ \ \ \ \ The\ x\ component\ of\ the\ vector\r\n\ @param\ y\ \ \ \ \ The\ y\ component\ of\ the\ vector\r\n
 comment2.params=
 comment2.target=double\ getMagnitude()
+comment2.text=\r\n\ Get\ the\ magnitude\ of\ the\ vector\r\n\ \r\n\ @return\ \ \ \ \ \ The\ magnitude\ of\ the\ vector\r\n
 comment3.params=
 comment3.target=double\ getAngle()
+comment3.text=\r\n\ Get\ the\ angle\ of\ the\ vector\r\n\ \r\n\ @return\ \ \ \ \ \ The\ angle\ of\ the\ vector\ in\ radians\ (0\ for\ y\ \=\ 0\ and\ x\ >\ 0)\r\n
 comment4.params=
 comment4.target=double\ getX()
 comment5.params=
@@ -18,4 +20,5 @@ comment7.params=y
 comment7.target=void\ setY(double)
 comment8.params=other
 comment8.target=Vector\ add(Vector)
+comment8.text=\r\n\ Add\ two\ Vectors\r\n\ \r\n\ @param\ other\ \ \ \ \ Another\ vector\r\n\ @return\ \ \ \ \ \ \ \ \ \ The\ resultant\ vector\r\n
 numComments=9

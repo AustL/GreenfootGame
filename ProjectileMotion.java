@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ProjectileMotion here.
+ * World representing the projectile motion simulation
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Austin
+ * @version 0
  */
 public class ProjectileMotion extends World
 {
@@ -32,7 +32,6 @@ public class ProjectileMotion extends World
     private boolean started = false;
     /**
      * Constructor for objects of class ProjectileMotion.
-     * 
      */
     public ProjectileMotion() {    
         // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
@@ -41,6 +40,9 @@ public class ProjectileMotion extends World
         setBackground(new GreenfootImage("Projectile Motion.png"));
     }
     
+    /**
+     * Listen for mouse input for sliders and buttons
+     */
     public void act() {
         setBackground(new GreenfootImage("Projectile Motion.png"));
         
@@ -67,8 +69,7 @@ public class ProjectileMotion extends World
     }
 
     /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
+     * Create all objects and add them to the world
      */
     private void prepare() {
         startButton = new Button(948, 329, 187, 187, new Color(0, 148, 68, 0));
@@ -76,6 +77,7 @@ public class ProjectileMotion extends World
         startButton.setHoverColour(new Color(0, 148, 68, 120));
         startButton.setBorderRadius(94);
         
+        // Top bar buttons
         backButton = new Button(33, 10, 80, 80, new Color(57, 181, 74, 0));
         backButton.addToWorld(this);
         backButton.setHoverColour(new Color(57, 181, 74, 140));
@@ -92,12 +94,14 @@ public class ProjectileMotion extends World
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
         
+        // Sliders
         angle = new Slider(141, 156, 336, 14, new Color(188, 190, 192), 20, 0, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         angle.addToWorld(this);
         
         velocity = new Slider(141, 210, 336, 14, new Color(188, 190, 192), 20, 0, 100, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         velocity.addToWorld(this);
         
+        // Labels for sliders
         angleLabel = new LinkedLabel(470, 144, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", angle.getValue()), 30, new Color(0, 148, 68));
         angleLabel.addToWorld(this);
         
@@ -107,6 +111,7 @@ public class ProjectileMotion extends World
         ball = new Ball(20, 0);
         ball.addToWorld(this);
         
+        // Output labels
         time = new LinkedLabel(955, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
         
@@ -120,6 +125,9 @@ public class ProjectileMotion extends World
         a.addToWorld(this);
     }
     
+    /**
+     * Starts the simulation with given inputs
+     */
     private void begin() {
         ball.setVelocity(velocity.getValue() * Math.cos(Math.toRadians(angle.getValue())), velocity.getValue() * Math.sin(Math.toRadians(angle.getValue())));
         startButton.disable();

@@ -1,14 +1,18 @@
 #BlueJ class context
 comment0.target=UIBase
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ UIBase\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Base\ class\ for\ all\ user\ interface\ elements\r\n\ \r\n\ @author\ Austin\r\n\ @version\ 0\r\n
 comment1.params=x\ y\ width\ height\ colour
 comment1.target=UIBase(int,\ int,\ int,\ int,\ greenfoot.Color)
+comment1.text=\r\n\ Constructor\ for\ UIBase\ elements\r\n\ \r\n\ @param\ x\ \ \ \ \ \ \ \ \ The\ x-coordinate\ of\ the\ element's\ top\ left\ corner\ (pixels)\r\n\ @param\ y\ \ \ \ \ \ \ \ \ The\ y-coordinate\ of\ the\ element's\ top\ left\ corner\ (pixels)\r\n\ @param\ width\ \ \ \ \ The\ width\ of\ the\ widget\r\n\ @param\ height\ \ \ \ The\ height\ of\ the\ widget\r\n\ @param\ colour\ \ \ \ The\ background\ colour\ of\ the\ element\r\n
 comment10.params=
 comment10.target=void\ enable()
+comment10.text=\r\n\ Enable\ the\ UI\ element\r\n
 comment2.params=x\ y
 comment2.target=boolean\ contains(int,\ int)
+comment2.text=\r\n\ Checks\ whether\ a\ coordinate\ is\ inside\ a\ UI\ element\r\n\ \r\n\ @param\ x\ \ \ \ \ \ \ \ \ The\ x-coordinate\ of\ the\ point\ to\ check\r\n\ @param\ y\ \ \ \ \ \ \ \ \ The\ y-cooridnate\ of\ the\ point\ to\ check\r\n
 comment3.params=world
 comment3.target=void\ addToWorld(greenfoot.World)
+comment3.text=\r\n\ Adds\ the\ UI\ element\ to\ the\ world\r\n\ \r\n\ @param\ world\ \ \ \ \ The\ world\ to\ add\ the\ element\ to\r\n
 comment4.params=
 comment4.target=int\ getXPos()
 comment5.params=
@@ -21,4 +25,5 @@ comment8.params=
 comment8.target=greenfoot.Color\ getColour()
 comment9.params=
 comment9.target=void\ disable()
+comment9.text=\r\n\ Disable\ the\ UI\ element\r\n
 numComments=11

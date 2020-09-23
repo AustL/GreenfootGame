@@ -1,15 +1,23 @@
 /**
- * Write a description of class Acceleration here.
+ * Class representing acceleration vectors
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Austin
+ * @version 0
  */
-public class Acceleration extends Vector 
-{
+public class Acceleration extends Vector {
+    /**
+     * Constructor for Acceleration with starting values
+     * 
+     * @param x     The x component of acceleration
+     * @param y     The y component of acceleration
+     */
     public Acceleration(double x, double y) {
         super(x, y);
     }
     
+    /**
+     * Constructor for a 0 Acceleration
+     */
     public Acceleration() {
         super(0, 0);
     }

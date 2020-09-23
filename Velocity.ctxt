@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=Velocity
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Velocity\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ representing\ the\ velocity\ vector\r\n\ \r\n\ @author\ Austin\r\n\ @version\ 0\r\n
 comment1.params=x\ y
 comment1.target=Velocity(double,\ double)
+comment1.text=\r\n\ Constructor\ for\ Velocity\ with\ starting\ values\r\n\ \r\n\ @param\ x\ \ \ \ \ The\ x\ component\ of\ velocity\r\n\ @param\ y\ \ \ \ \ The\ y\ component\ of\ velocity\r\n
 comment2.params=
 comment2.target=Velocity()
+comment2.text=\r\n\ Constructor\ for\ a\ 0\ Velocity\r\n
 comment3.params=acceleration\ dt
 comment3.target=void\ updateWithAcceleration(Acceleration,\ double)
+comment3.text=\r\n\ Updates\ the\ velocity\ with\ an\ acceleration\ over\ some\ time\r\n\ \r\n\ @param\ acceleration\ \ The\ accleration\ of\ the\ object\ with\ the\ velocity\r\n\ @param\ dt\ \ \ \ \ \ \ \ \ \ \ \ The\ time\ since\ the\ last\ update\r\n
 numComments=4

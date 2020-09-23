@@ -1,9 +1,10 @@
 #BlueJ class context
 comment0.target=LinkedLabel
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ LinkedLabel\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ representing\ linked\ labels\r\n\ \r\n\ @author\ Austin\r\n\ @version\ 0\r\n
 comment1.params=x\ y\ width\ height\ colour\ supplier\ fontSize\ textColour
 comment1.target=LinkedLabel(int,\ int,\ int,\ int,\ greenfoot.Color,\ java.util.function.Supplier,\ int,\ greenfoot.Color)
-comment1.text=\r\n\ Constructor\ for\ a\ label\ linked\ to\ a\ method\r\n\ @param\ x\ Top\ left\ coordinate\ x\r\n\ @param\ y\ Top\ left\ coordinate\ y\r\n\ @param\ width\ Width\ of\ label\r\n\ @param\ height\ Height\ of\ label\r\n\ @param\ colour\ Background\ colour\ of\ label\r\n\ @param\ text\ String\ to\ display\ on\ the\ label\r\n\ @param\ fontSize\ Font\ size\ of\ text\r\n\ @param\ textColour\ Colour\ of\ text\r\n
+comment1.text=\r\n\ Constructor\ for\ a\ label\ linked\ to\ a\ supplier\r\n\ \r\n\ @param\ x\ \ \ \ \ \ \ \ \ \ \ \ \ Top\ left\ coordinate\ x\r\n\ @param\ y\ \ \ \ \ \ \ \ \ \ \ \ \ Top\ left\ coordinate\ y\r\n\ @param\ width\ \ \ \ \ \ \ \ \ Width\ of\ label\r\n\ @param\ height\ \ \ \ \ \ \ \ Height\ of\ label\r\n\ @param\ colour\ \ \ \ \ \ \ \ Background\ colour\ of\ label\r\n\ @param\ supplier\ \ \ \ \ \ A\ string\ supplier\ that\ returns\ a\ string\ determined\ by\ a\ lambda\ function\r\n\ @param\ fontSize\ \ \ \ \ \ Font\ size\ of\ text\r\n\ @param\ textColour\ \ \ \ Colour\ of\ text\r\n
 comment2.params=
 comment2.target=void\ createImage()
+comment2.text=\r\n\ Draw\ the\ label\ as\ a\ rectangle\ to\ the\ screen\r\n\ Display\ the\ text\ from\ the\ supplier\ in\ the\ centre\ of\ the\ rectangle\ \r\n
 numComments=3

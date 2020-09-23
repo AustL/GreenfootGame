@@ -1,28 +1,27 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.lang.reflect.Method;
 
 /**
- * Write a description of class Button here.
+ * Class representing labels
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Austin
+ * @version 0
  */
-public class Label extends UIBase
-{
+public class Label extends UIBase {
     protected String text;
     protected int fontSize;
     protected Color textColour;
     
     /**
      * Constructor for a text label
-     * @param x Top left coordinate x
-     * @param y Top left coordinate y
-     * @param width Width of label
-     * @param height Height of label
-     * @param colour Background colour of label
-     * @param text String to display on the label
-     * @param fontSize Font size of text
-     * @param textColour Colour of text
+     * 
+     * @param x             Top left coordinate x
+     * @param y             Top left coordinate y
+     * @param width         Width of label
+     * @param height        Height of label
+     * @param colour        Background colour of label
+     * @param text          String to display on the label
+     * @param fontSize      Font size of text
+     * @param textColour    Colour of text
      */
     public Label(int x, int y, int width, int height, Color colour, String text, int fontSize, Color textColour) {
         super(x, y, width, height, colour);
@@ -32,13 +31,16 @@ public class Label extends UIBase
     }
     
     /**
-     * Act - do whatever the Label wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Update the image
      */
     public void act() {
         createImage();
     }
     
+    /**
+     * Draw the label as a rectangle to the screen
+     * Display the text in the centre of the rectangle 
+     */
     protected void createImage() {
         GreenfootImage image = new GreenfootImage(width, height);
         image.setColor(colour);
@@ -50,9 +52,20 @@ public class Label extends UIBase
         setImage(image);
     }
     
+    /**
+     * Set the background colour of the label
+     * 
+     * @param colour    The colour to set the background to
+     */
     public void setColour(Color colour) { this.colour = colour; }
     
+    /**
+     * Set the text the label displays
+     * 
+     * @param text      The text to display
+     */
     public void setText(String text) { this.text = text; }
-
+    
+    // Getters
     public String getText() { return text; }
 }

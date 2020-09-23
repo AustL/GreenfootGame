@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=Position
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Position\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ representing\ the\ position\ vector\r\n\ \r\n\ @author\ Austin\r\n\ @version\ 0\r\n
 comment1.params=x\ y
 comment1.target=Position(double,\ double)
+comment1.text=\r\n\ Constructor\ for\ Position\ with\ starting\ values\r\n\ \r\n\ @param\ x\ \ \ \ \ The\ x\ component\ of\ position\r\n\ @param\ y\ \ \ \ \ The\ y\ component\ of\ position\r\n
 comment2.params=
 comment2.target=Position()
+comment2.text=\r\n\ Constructor\ for\ a\ 0\ Position\r\n
 comment3.params=vel\ dt
 comment3.target=void\ updateWithVelocity(Velocity,\ double)
+comment3.text=\r\n\ Updates\ the\ position\ with\ a\ velocity\ over\ some\ time\r\n\ \r\n\ @param\ vel\ \ \ The\ velocity\ of\ the\ object\ with\ the\ position\r\n\ @param\ dt\ \ \ \ The\ time\ since\ the\ last\ update\r\n
 numComments=4

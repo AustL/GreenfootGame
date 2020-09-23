@@ -1,22 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Menu here.
+ * World representing the menu screen
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Austin
+ * @version 0
  */
-public class Menu extends World
-{
+public class Menu extends World {
     Button projectileButton;
     Button shmButton;
     Button circularButton;
-    
-    // Change
     Button frictionButton;
+
     /**
      * Constructor for objects of class Menu.
-     * 
      */
     public Menu() {    
         // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
@@ -25,6 +22,9 @@ public class Menu extends World
         setBackground(new GreenfootImage("Menu.png"));
     }
     
+    /**
+     * Listen for button presses
+     */
     public void act() {
         if (projectileButton.mouseDown()) {
             Greenfoot.setWorld(new ProjectileMotion());
@@ -43,6 +43,9 @@ public class Menu extends World
         }
     }
     
+    /**
+     * Define buttons and add them to the world
+     */
     private void prepare() {
         projectileButton = new Button(205, 275, 300, 200, new Color(0, 148, 68, 0));
         projectileButton.addToWorld(this);
