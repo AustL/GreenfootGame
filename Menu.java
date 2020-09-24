@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Menu extends World {
     Button projectileButton;
     Button shmButton;
-    Button circularButton;
+    Button collisionButton;
     Button frictionButton;
 
     /**
@@ -34,8 +34,8 @@ public class Menu extends World {
             Greenfoot.setWorld(new SHM());
         }
         
-        if (circularButton.mouseDown()) {
-            Greenfoot.setWorld(new CircularMotion());
+        if (collisionButton.mouseDown()) {
+            Greenfoot.setWorld(new Collision());
         }
         
         if (frictionButton.mouseDown()) {
@@ -57,10 +57,10 @@ public class Menu extends World {
         shmButton.setHoverColour(new Color(0, 148, 68, 120));
         shmButton.setBorderRadius(15);
         
-        circularButton = new Button(205, 526, 300, 200, new Color(0, 148, 68, 0));
-        circularButton.addToWorld(this);
-        circularButton.setHoverColour(new Color(0, 148, 68, 120));
-        circularButton.setBorderRadius(15);
+        collisionButton = new Button(205, 526, 300, 200, new Color(0, 148, 68, 0));
+        collisionButton.addToWorld(this);
+        collisionButton.setHoverColour(new Color(0, 148, 68, 120));
+        collisionButton.setBorderRadius(15);
         
         frictionButton = new Button(695, 526, 300, 200, new Color(0, 148, 68, 0));
         frictionButton.addToWorld(this);

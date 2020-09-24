@@ -6,13 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CircularMotion extends World {
+public class Collision extends World {
     private Button startButton;
     private Button backButton;
+    private Button resetButton;
     private Button helpButton;
     private Button exitButton;
-    
-    private Moon moon;
     
     private boolean started = false;
     
@@ -20,15 +19,15 @@ public class CircularMotion extends World {
      * Constructor for objects of class CircularMotion.
      * 
      */
-    public CircularMotion() {    
+    public Collision() {    
         // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1);
         prepare();
-        setBackground(new GreenfootImage("Circular Motion.png"));
+        setBackground(new GreenfootImage("Collision.png"));
     }
     
     public void act() {
-        setBackground(new GreenfootImage("Circular Motion.png"));
+        setBackground(new GreenfootImage("Collision.png"));
         
         if (startButton.mouseDown()) {
             begin();
@@ -36,6 +35,10 @@ public class CircularMotion extends World {
 
         if (backButton.mouseDown()) {
             Greenfoot.setWorld(new Menu());
+        }
+        
+        if (resetButton.mouseDown()) {
+            Greenfoot.setWorld(new Collision());
         }
         
         if (exitButton.mouseUp()) {
@@ -49,9 +52,14 @@ public class CircularMotion extends World {
         startButton.setHoverColour(new Color(0, 148, 68, 120));
         startButton.setBorderRadius(94);
         
+        // Top bar buttons
         backButton = new Button(33, 10, 80, 80, new Color(57, 181, 74, 0));
         backButton.addToWorld(this);
         backButton.setHoverColour(new Color(57, 181, 74, 140));
+        
+        resetButton = new Button(875, 10, 80, 80, new Color(57, 181, 74, 0));
+        resetButton.addToWorld(this);
+        resetButton.setHoverColour(new Color(57, 181, 74, 140));
         
         helpButton = new Button(988, 10, 80, 80, new Color(57, 181, 74, 0));
         helpButton.addToWorld(this);
@@ -61,13 +69,17 @@ public class CircularMotion extends World {
         exitButton.addToWorld(this);
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
         
-        moon = new Moon(600, 600, 1, 100);
-        moon.addToWorld(this);
+        // Sliders
+        
+        
+        // Labels for sliders
+        
+        
+        // Output labels
     }
     
     private void begin() {
         started = true;
         startButton.disable();
-        moon.resume();
     }
 }

@@ -6,6 +6,7 @@ comment1.target=Friction()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Friction.\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Listen\ for\ mouse\ input\ for\ sliders\ and\ buttons\r\n
 comment3.params=
 comment3.target=void\ prepare()
 comment4.params=
