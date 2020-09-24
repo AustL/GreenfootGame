@@ -6,15 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Austin
  * @version 0
  */
-public class ProjectileMotion extends World
-{
+public class ProjectileMotion extends Simulation {
     private final double velocityToLength = 1.5;
-    
-    private Button startButton;
-    private Button backButton;
-    private Button resetButton;
-    private Button helpButton;
-    private Button exitButton;
 
     private Slider angle;
     private Slider velocity;
@@ -29,14 +22,11 @@ public class ProjectileMotion extends World
     
     private Ball ball;
 
-    private boolean started = false;
     /**
      * Constructor for objects of class ProjectileMotion.
      */
-    public ProjectileMotion() {    
-        // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
-        super(1200, 800, 1);
-        prepare();
+    public ProjectileMotion() {
+        super();
         setBackground(new GreenfootImage("Projectile Motion.png"));
     }
     
@@ -44,22 +34,12 @@ public class ProjectileMotion extends World
      * Listen for mouse input for sliders and buttons
      */
     public void act() {
+        super.act();
+        
         setBackground(new GreenfootImage("Projectile Motion.png"));
-        
-        if (startButton.mouseDown()) {
-            begin();
-        }
-
-        if (backButton.mouseDown()) {
-            Greenfoot.setWorld(new Menu());
-        }
-        
+               
         if (resetButton.mouseDown()) {
             Greenfoot.setWorld(new ProjectileMotion());
-        }
-        
-        if (exitButton.mouseUp()) {
-            Greenfoot.stop();
         }
         
         // Display line
@@ -71,29 +51,8 @@ public class ProjectileMotion extends World
     /**
      * Create all objects and add them to the world
      */
-    private void prepare() {
-        startButton = new Button(948, 329, 187, 187, new Color(0, 148, 68, 0));
-        startButton.addToWorld(this);
-        startButton.setHoverColour(new Color(0, 148, 68, 120));
-        startButton.setBorderRadius(94);
-        
-        // Top bar buttons
-        backButton = new Button(33, 10, 80, 80, new Color(57, 181, 74, 0));
-        backButton.addToWorld(this);
-        backButton.setHoverColour(new Color(57, 181, 74, 140));
-        
-        resetButton = new Button(875, 10, 80, 80, new Color(57, 181, 74, 0));
-        resetButton.addToWorld(this);
-        resetButton.setHoverColour(new Color(57, 181, 74, 140));
-        
-        helpButton = new Button(988, 10, 80, 80, new Color(57, 181, 74, 0));
-        helpButton.addToWorld(this);
-        helpButton.setHoverColour(new Color(57, 181, 74, 140));
-        
-        exitButton = new Button(1102, 10, 80, 80, new Color(57, 181, 74, 0));
-        exitButton.addToWorld(this);
-        exitButton.setHoverColour(new Color(57, 181, 74, 140));
-        
+    protected void prepare() {
+        super.prepare();
         // Sliders
         angle = new Slider(141, 156, 336, 14, new Color(188, 190, 192), 20, 0, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         angle.addToWorld(this);
@@ -128,11 +87,12 @@ public class ProjectileMotion extends World
     /**
      * Starts the simulation with given inputs
      */
-    private void begin() {
+    protected void begin() {
+        super.begin();
         ball.setVelocity(velocity.getValue() * Math.cos(Math.toRadians(angle.getValue())), velocity.getValue() * Math.sin(Math.toRadians(angle.getValue())));
-        startButton.disable();
         ball.showForces();
-        started = true;
         ball.resume();
+        angle.disable();
+        velocity.disable();
     }
 }

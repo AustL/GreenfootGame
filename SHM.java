@@ -6,13 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Austin
  * @version 0
  */
-public class SHM extends World { 
-    private Button startButton;
-    private Button backButton;
-    private Button resetButton;
-    private Button helpButton;
-    private Button exitButton;
-    
+public class SHM extends Simulation { 
     private Slider angle;
     private Slider radius;
     
@@ -25,16 +19,12 @@ public class SHM extends World {
     private Label a;
     
     private Pendulum pendulum;
-    
-    private boolean started = false;
 
     /**
      * Constructor for objects of class SHM.
      */
-    public SHM() {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1200, 800, 1);
-        prepare();
+    public SHM() {
+        super();
         setBackground(new GreenfootImage("SHM.png"));
     }
     
@@ -42,22 +32,12 @@ public class SHM extends World {
      * Listen for mouse input for sliders and buttons
      */
     public void act() {
+        super.act();
+        
         setBackground(new GreenfootImage("SHM.png"));
-        
-        if (startButton.mouseDown()) {
-            begin();
-        }
-        
-        if (backButton.mouseDown()) {
-            Greenfoot.setWorld(new Menu());
-        }
-        
+
         if (resetButton.mouseDown()) {
             Greenfoot.setWorld(new SHM());
-        }
-        
-        if (exitButton.mouseUp()) {
-            Greenfoot.stop();
         }
         
         // Sets the position of the pendulum for live feedback
@@ -69,28 +49,8 @@ public class SHM extends World {
     /**
      * Create all objects and add them to the world
      */
-    private void prepare() {
-        startButton = new Button(948, 329, 187, 187, new Color(0, 148, 68, 0));
-        startButton.addToWorld(this);
-        startButton.setHoverColour(new Color(0, 148, 68, 120));
-        startButton.setBorderRadius(94);
-        
-        // Top bar buttons
-        backButton = new Button(33, 10, 80, 80, new Color(57, 181, 74, 0));
-        backButton.addToWorld(this);
-        backButton.setHoverColour(new Color(57, 181, 74, 140));
-        
-        resetButton = new Button(875, 10, 80, 80, new Color(57, 181, 74, 0));
-        resetButton.addToWorld(this);
-        resetButton.setHoverColour(new Color(57, 181, 74, 140));
-        
-        helpButton = new Button(988, 10, 80, 80, new Color(57, 181, 74, 0));
-        helpButton.addToWorld(this);
-        helpButton.setHoverColour(new Color(57, 181, 74, 140));
-        
-        exitButton = new Button(1102, 10, 80, 80, new Color(57, 181, 74, 0));
-        exitButton.addToWorld(this);
-        exitButton.setHoverColour(new Color(57, 181, 74, 140));
+    protected void prepare() {
+        super.prepare();
         
         // Sliders
         angle = new Slider(139, 633, 336, 14, new Color(188, 190, 192), 20, 210, 330, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
@@ -126,12 +86,12 @@ public class SHM extends World {
     /**
      * Starts the simulation with given inputs
      */
-    private void begin() {
+    protected void begin() {
+        super.begin();
+        
         pendulum.resume();
-        started = true;
         angle.disable();
         radius.disable();
-        startButton.disable();
         pendulum.showForces();
     }
 }

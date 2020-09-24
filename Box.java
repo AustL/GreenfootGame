@@ -101,6 +101,7 @@ public class Box extends RigidBody {
         if (position.getY() == 0) {
             setRotation(0);
             hideForces();
+            velocity.setY(0);
         }
     }
     
