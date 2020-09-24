@@ -57,6 +57,9 @@ public class Friction extends Simulation {
         ramp = new Ramp();
         ramp.addToWorld(this);
         
+        box = new Box(ramp);
+        box.addToWorld(this);
+        
         // Sliders
         height = new Slider(141, 156, 336, 14, new Color(188, 190, 192), 20, 150, 500, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         height.addToWorld(this);
@@ -74,12 +77,9 @@ public class Friction extends Simulation {
         lengthLabel = new LinkedLabel(470, 198, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.01f", length.getValue()), 30, new Color(0, 148, 68));
         lengthLabel.addToWorld(this);
         
-        muLabel = new LinkedLabel(470, 252, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.03f", mu.getValue()), 30, new Color(0, 148, 68));
+        muLabel = new LinkedLabel(470, 252, 80, 36, new Color(57, 181, 74, 0), () -> String.format("%.02f", mu.getValue()), 30, new Color(0, 148, 68));
         muLabel.addToWorld(this);
-        
-        box = new Box(ramp);
-        box.addToWorld(this);
-        
+
         // Output labels
         time = new LinkedLabel(955, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", box.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
@@ -101,6 +101,7 @@ public class Friction extends Simulation {
         super.begin();
         box.resume();
         box.showForces();
+        
         height.disable();
         length.disable();
         mu.disable();
