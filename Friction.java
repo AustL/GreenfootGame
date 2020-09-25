@@ -51,6 +51,9 @@ public class Friction extends Simulation {
         }
     }
     
+    /**
+     * Create all objects and add them to the world
+     */
     protected void prepare() {
         super.prepare();
         

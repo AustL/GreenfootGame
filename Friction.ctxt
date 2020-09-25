@@ -9,6 +9,7 @@ comment2.target=void\ act()
 comment2.text=\r\n\ Listen\ for\ mouse\ input\ for\ sliders\ and\ buttons\r\n
 comment3.params=
 comment3.target=void\ prepare()
+comment3.text=\r\n\ Create\ all\ objects\ and\ add\ them\ to\ the\ world\r\n
 comment4.params=
 comment4.target=void\ begin()
 comment4.text=\r\n\ Starts\ the\ simulation\ with\ given\ inputs\r\n

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Simulation here.
+ * Base class for all simulation worlds
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Austin
+ * @version 0
  */
 public class Simulation extends World {
     protected Button startButton;
@@ -20,11 +20,14 @@ public class Simulation extends World {
      * 
      */
     public Simulation() {    
-        // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
+        // Create an unbounded new world with 1200x800 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1, false);
         prepare();
     }
     
+    /**
+     * Listen for start and top bar button presses
+     */
     public void act() {      
         if (startButton.mouseDown()) {
             begin();
@@ -39,6 +42,9 @@ public class Simulation extends World {
         }
     }
     
+     /**
+     * Create the start and top bar buttons and add them to the world
+     */
     protected void prepare() {
         startButton = new Button(948, 329, 187, 187, new Color(0, 148, 68, 0));
         startButton.addToWorld(this);
@@ -63,6 +69,9 @@ public class Simulation extends World {
         exitButton.setHoverColour(new Color(57, 181, 74, 140));
     }
     
+    /**
+     * Begin the simulation and disable the start button
+     */
     protected void begin() {
         started = true;
         startButton.disable();

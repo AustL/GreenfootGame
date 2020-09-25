@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CircularMotion here.
+ * World representing the elastic collision simulation
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Austin
+ * @version 0
  */
 public class Collision extends Simulation {
     private Slider mass1;
@@ -27,14 +27,16 @@ public class Collision extends Simulation {
     private Marble marble2;
 
     /**
-     * Constructor for objects of class CircularMotion.
+     * Constructor for objects of class Collision.
      */
     public Collision() {
-        // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
         super();
         setBackground(new GreenfootImage("Collision.png"));
     }
     
+    /**
+     * Listen for mouse input for sliders and buttons
+     */
     public void act() {
         super.act();
         
@@ -51,6 +53,7 @@ public class Collision extends Simulation {
             marble1.setVelocity(velocity1.getValue());
             marble2.setVelocity(velocity2.getValue());
         } else {
+            // Check for a collision and let the marble calculate its final velocity
             if (marble1.collided()) {
                 double u1 = marble1.getVelocity().getX();
                 double u2 = marble2.getVelocity().getX();
@@ -63,6 +66,9 @@ public class Collision extends Simulation {
         }
     }
     
+    /**
+     * Create all objects and add them to the world
+     */
     protected void prepare() {
         super.prepare();
         
@@ -114,7 +120,10 @@ public class Collision extends Simulation {
         v2 = new LinkedLabel(650, 655, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble2.getVelocity().getX()) + " ms⁻¹", 25, new Color(0, 148, 68));
         v2.addToWorld(this);
     }
-
+    
+    /**
+     * Starts the simulation with given inputs
+     */
     protected void begin() {
         super.begin();
 
