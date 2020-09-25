@@ -50,6 +50,16 @@ public class Collision extends Simulation {
             
             marble1.setVelocity(velocity1.getValue());
             marble2.setVelocity(velocity2.getValue());
+        } else {
+            if (marble1.collided()) {
+                double u1 = marble1.getVelocity().getX();
+                double u2 = marble2.getVelocity().getX();
+                double m1 = marble1.getMass();
+                double m2 = marble2.getMass();
+                
+                marble1.calculateFinalVelocity(u2, m2);
+                marble2.calculateFinalVelocity(u1, m1);
+            }
         }
     }
     
@@ -92,16 +102,16 @@ public class Collision extends Simulation {
         time = new LinkedLabel(955, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", marble1.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
         
-        x1 = new LinkedLabel(955, 95, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble1.getPosition().getX()) + " m", 25, new Color(0, 148, 68));
+        x1 = new LinkedLabel(50, 605, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble1.getPosition().getX()) + " m", 25, new Color(0, 148, 68));
         x1.addToWorld(this);
         
-        v1 = new LinkedLabel(955, 145, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble1.getVelocity().getX()) + " ms⁻¹", 25, new Color(0, 148, 68));
+        v1 = new LinkedLabel(50, 655, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble1.getVelocity().getX()) + " ms⁻¹", 25, new Color(0, 148, 68));
         v1.addToWorld(this);
         
-        x2 = new LinkedLabel(955, 195, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble2.getPosition().getX()) + " m", 25, new Color(0, 148, 68));
+        x2 = new LinkedLabel(650, 605, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble2.getPosition().getX()) + " m", 25, new Color(0, 148, 68));
         x2.addToWorld(this);
         
-        v2 = new LinkedLabel(955, 245, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble2.getVelocity().getX()) + " ms⁻¹", 25, new Color(0, 148, 68));
+        v2 = new LinkedLabel(650, 655, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", marble2.getVelocity().getX()) + " ms⁻¹", 25, new Color(0, 148, 68));
         v2.addToWorld(this);
     }
 

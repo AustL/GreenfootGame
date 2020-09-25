@@ -136,6 +136,10 @@ public abstract class RigidBody extends Actor {
         return time;
     }
     
+    public double getMass() {
+        return mass;
+    }
+    
     public Position getPosition() {
         return position;
     }
