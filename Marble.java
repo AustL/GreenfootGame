@@ -31,6 +31,10 @@ public class Marble extends RigidBody {
         image.setColor(colour);
         image.fillOval(0, 0, (int) (mass * 10), (int) (mass * 10));  // The size depends on the mass
         setImage(image);
+        
+        if (paused) {
+            drawLine(velocity.getX() * 15, 0, Color.RED);
+        }
     }
     
     /**

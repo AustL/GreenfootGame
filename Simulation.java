@@ -37,7 +37,7 @@ public class Simulation extends World {
             Greenfoot.setWorld(new Menu());
         }
         
-        if (exitButton.mouseUp()) {
+        if (exitButton.mouseDown()) {
             Greenfoot.stop();
         }
     }

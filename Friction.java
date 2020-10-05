@@ -84,16 +84,16 @@ public class Friction extends Simulation {
         muLabel.addToWorld(this);
 
         // Output labels
-        time = new LinkedLabel(955, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", box.getTime()) + " s", 25, new Color(0, 148, 68));
+        time = new LinkedLabel(945, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", box.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
         
-        x = new LinkedLabel(955, 95, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getPosition().getX()) + " m, " + String.format("%.01f", box.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
+        x = new LinkedLabel(945, 95, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getPosition().getX()) + " m, " + String.format("%.01f", box.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
         x.addToWorld(this);
         
-        v = new LinkedLabel(955, 145, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", box.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
+        v = new LinkedLabel(945, 145, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", box.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
         v.addToWorld(this);
         
-        a = new LinkedLabel(955, 195, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", box.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
+        a = new LinkedLabel(945, 195, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", box.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", box.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
         a.addToWorld(this);
     }
     

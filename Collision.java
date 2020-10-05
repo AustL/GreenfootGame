@@ -72,10 +72,10 @@ public class Collision extends Simulation {
     protected void prepare() {
         super.prepare();
         
-        marble1 = new Marble(200, 300, 8, Color.RED);
+        marble1 = new Marble(200, 300, 8, new Color(242, 47, 47));
         marble1.addToWorld(this);
         
-        marble2 = new Marble(800, 300, 8, Color.BLUE);
+        marble2 = new Marble(800, 300, 8, new Color(39, 170, 225));
         marble2.addToWorld(this);
         
         // Sliders

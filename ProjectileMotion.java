@@ -53,6 +53,7 @@ public class ProjectileMotion extends Simulation {
      */
     protected void prepare() {
         super.prepare();
+        
         // Sliders
         angle = new Slider(141, 156, 336, 14, new Color(188, 190, 192), 20, 0, 90, new Color(57, 181, 74), new Color(0, 148, 68), new Color(0, 148, 68), 3);
         angle.addToWorld(this);
@@ -71,16 +72,16 @@ public class ProjectileMotion extends Simulation {
         ball.addToWorld(this);
         
         // Output labels
-        time = new LinkedLabel(955, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()) + " s", 25, new Color(0, 148, 68));
+        time = new LinkedLabel(945, 45, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", ball.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
         
-        x = new LinkedLabel(955, 95, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getPosition().getX() - 20) + " m, " + String.format("%.01f", ball.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
+        x = new LinkedLabel(945, 95, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getPosition().getX() - 20) + " m, " + String.format("%.01f", ball.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
         x.addToWorld(this);
         
-        v = new LinkedLabel(955, 145, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", ball.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
+        v = new LinkedLabel(945, 145, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", ball.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
         v.addToWorld(this);
         
-        a = new LinkedLabel(955, 195, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", ball.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
+        a = new LinkedLabel(945, 195, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", ball.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", ball.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
         a.addToWorld(this);
     }
     

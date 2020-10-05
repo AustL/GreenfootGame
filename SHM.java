@@ -70,16 +70,16 @@ public class SHM extends Simulation {
         pendulum.addToWorld(this);
         
         // Output labels
-        time = new LinkedLabel(955, 478, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", pendulum.getTime()) + " s", 25, new Color(0, 148, 68));
+        time = new LinkedLabel(945, 478, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.02f", pendulum.getTime()) + " s", 25, new Color(0, 148, 68));
         time.addToWorld(this);
         
-        x = new LinkedLabel(955, 528, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getPosition().getX()) + " m, " + String.format("%.01f", pendulum.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
+        x = new LinkedLabel(945, 528, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getPosition().getX()) + " m, " + String.format("%.01f", pendulum.getPosition().getY()) + " m", 25, new Color(0, 148, 68));
         x.addToWorld(this);
         
-        v = new LinkedLabel(955, 578, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", pendulum.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
+        v = new LinkedLabel(945, 578, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getVelocity().getX()) + " ms⁻¹, " + String.format("%.01f", pendulum.getVelocity().getY()) + " ms⁻¹", 25, new Color(0, 148, 68));
         v.addToWorld(this);
         
-        a = new LinkedLabel(955, 628, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", pendulum.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
+        a = new LinkedLabel(945, 628, 300, 200, new Color(0, 0, 0, 0), () -> String.format("%.01f", pendulum.getAcceleration().getX()) + " ms⁻², " + String.format("%.01f", pendulum.getAcceleration().getY()) + " ms⁻²", 25, new Color(0, 148, 68));
         a.addToWorld(this);
     }
     
